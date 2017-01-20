@@ -49,9 +49,5 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "socket.io-client": "^1.7.2"
-  },
-  "bugs": {
-    "url": "https://github.com/luigi055/react-bootstrap4-boilerplate/issues"
-  },
-  "homepage": "https://github.com/luigi055/react-bootstrap4-boilerplate#readme"
+  }
 }

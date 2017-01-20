@@ -1,5 +1,5 @@
 const express = require('express');
-const socketIO = require('socket.io');
+const socket = require('socket.io');
 const http = require('http');
 
 // Create our app
@@ -9,6 +9,15 @@ var io = socketIO(server);
 
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static('public'));
+
+io.on('connection', (socket) => {
+  console.log('New user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
 // change https to http req.headers[] doesn't exist locally
 app.use((req, res, next) => {
   if (req.headers['x-forwarded-proto'] === 'https') {
@@ -16,12 +25,6 @@ app.use((req, res, next) => {
   } else {
     next();
   }
-});
-
-app.use(express.static('public'));
-
-io.on('connection', (socket) => {
-  console.log('New user connected');
 });
 
 //Default 404 page

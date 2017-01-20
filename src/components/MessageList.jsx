@@ -1,9 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import io from 'socket.io-client';
-let socket = io(`http://localhost:3000`); 
 
 export class MessageList extends React.Component {
+  componentDidMount () {
+    console.log('hello');
+    socket.on('connect', (data) => {
+      console.log('Connected client');
+    });
+  }
   render () {
     return (
       <div className='container container-component'>

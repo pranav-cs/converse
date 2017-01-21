@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+
 export class MessageList extends React.Component {
   componentDidMount () {
     console.log('hello');

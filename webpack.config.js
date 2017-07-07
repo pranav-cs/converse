@@ -5,8 +5,6 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'script!jquery/dist/jquery.min.js',
-    'script!tether/dist/js/tether.min.js',
-    'script!bootstrap/dist/js/bootstrap.min.js',
     './src/app.jsx'
   ],
   externals: {
@@ -15,28 +13,33 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       '$': 'jquery', // Assigning the $ and jQuery to jquery when bundle
-      'jQuery': 'jquery',
-      'Tether': 'tether',
-      'window.Tether': 'tether'
+      'jQuery': 'jquery'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     })
   ],
   output: {
-    path: './public',
+    path: './server/public',
     filename: 'bundle.js'
   },
   resolve: {
-    root: __dirname,
+    root: './',
     modulesDirectories: [
 			'node_modules',
-			'./src/components'
+			'./src/components',
+			'./src/actions',
+			'./src/reducers',
+			'./src/router',
+      './src/scss',
+			'./src/store'
 		],
-    alias: {
-      src: 'src',
-      actions: 'src/actions/actions.jsx',
-      reducers: 'src/reducers/reducers.jsx',
-      router: 'src/router/router.jsx',
-      store: 'src/store/store.jsx'
-    },
+    alias: {},
     extensions: ['', '.js', '.jsx']
   },
   module: {
@@ -55,11 +58,13 @@ module.exports = {
       },
       // the url-loader uses DataUrls.
       // the file-loader emits files.
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]"
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader?limit=10000&name=fonts/[name].[ext]"
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?limit=10000&name=fonts/[name].[ext]'
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -82,14 +87,9 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 3000,
+    port: 3001,
     historyApiFallback: true,
-    contentBase: './public',
+    contentBase: './server/public',
     inline: true
-  },
-  sassLoader: {
-    includePaths: [
-      path.resolve(__dirname, './node_modules/bootstrap/scss')
-    ]
   }
 };

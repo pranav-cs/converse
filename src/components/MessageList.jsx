@@ -1,21 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-const io = require('socket.io-client');
+import io from 'socket.io-client';
 
 const socket = io();
 
 export class MessageList extends React.Component {
-  componentDidMount() {
-    console.log('hello');
-    socket.on('connect', () => {
-      console.log('Connected client');
+  constructor(props) {
+    super(props);
+
+    socket.on('connect', function () {
+      console.log('Connected to server');
+
+      socket.emit('messageFromUser', {
+        text: 'yo, this is client'
+      })
+    });
+
+    socket.on('disconnect', function () {
+      console.log('Disconnected from server');
+    });
+
+    socket.on('messageFromServer', function (data) {
+      console.log('New messageFromServer');
+      console.log(data);
     });
   }
+
   render() {
     return (
       <div>
-        <h1 className='title-component'>Converse</h1>
+        <h1>Converse</h1>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 {
-  "name": "react-workflow-bs4-fa-es6",
+  "name": "converse",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple chat app for humans",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -9,12 +9,19 @@
     "wstart": "webpack-dev-server --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "7.0.0"
-  },
   "author": "Pranav",
-  "license": "ISC",
-  "devDependencies": {
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "express": "^4.14.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "react-router": "^3.0.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "socket.io": "^1.7.2",
+    "socket.io-client": "^1.7.2",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-polyfill": "^6.20.0",
@@ -40,17 +47,5 @@
     "uuid": "^3.0.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
-  },
-  "dependencies": {
-    "axios": "^0.15.3",
-    "express": "^4.14.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.2",
-    "react-router": "^3.0.1",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0",
-    "socket.io": "^1.7.2",
-    "socket.io-client": "^1.7.2"
   }
 }

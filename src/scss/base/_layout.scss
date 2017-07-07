@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background-color: $background-color;
+  max-width: 100%;
+
+  body {
+    height: 100%;
+    background-color: inherit;
+
+    margin: 0px;
+    padding: 0px;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    #app {
+      height: 100%;
+      background-color: inherit;
+
+      margin: 0px;
+      padding: 0px;
+
+      overflow: hidden;
+
+      #container {
+        height: 100%;
+        background-color: inherit;
+
+        font-family: $font-family;
+
+        margin: 0px;
+        padding: 0px;
+
+        z-index: -1;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    }
+  }
+}

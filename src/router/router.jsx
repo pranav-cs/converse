@@ -1,13 +1,13 @@
 import React from 'react';
-import {Route, Router, IndexRoute, hashHistory} from 'react-router';
+import { Route, Router, browserHistory, IndexRoute } from 'react-router';
 
-import {Main} from 'Main';
-import {MessageList} from 'MessageList';
+import Container from 'Container';
+import MessageList from 'MessageList';
 
 export default (
-  <Router history={hashHistory}>
-    <Route path="/" component={Main}>
-      <IndexRoute component={MessageList}/>
+  <Router history={browserHistory}>
+    <Route path="/" component={Container}>
+      <IndexRoute path="home" component={MessageList} />
     </Route>
   </Router>
 );

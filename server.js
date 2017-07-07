@@ -1,10 +1,10 @@
-import express from 'express';
-import socket from 'socket.io'
-import {Server} from 'http'
+const express = require('express');
+const socketIO = require('socket.io');
+const { Server } = require('http');
 
 const app = express();
 const server = Server(app);
-const io = socket(server);
+const io = socketIO(server);
 
 const PORT = process.env.PORT || 3000;
 

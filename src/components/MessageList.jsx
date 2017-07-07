@@ -5,9 +5,9 @@ import {connect} from 'react-redux';
 export class MessageList extends React.Component {
   componentDidMount () {
     console.log('hello');
-    socket.on('connect', (data) => {
-      console.log('Connected client');
-    });
+    // socket.on('connect', (data) => {
+    //   console.log('Connected client');
+    // });
   }
   render () {
     return (

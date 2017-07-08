@@ -7,25 +7,32 @@ const app = express();
 const server = Server(app);
 const io = socketIO(server);
 
+const { generateMessage } = require('./utils/message');
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.resolve(__dirname, 'public')));
-//app.use(express.static('./public'));
 
 io.on('connection', (socket) => {
   console.log('New user connected');
 
-  socket.emit('messageFromServer', {
-    text: 'this is a test'
-  });
+  socket.emit('messageFromServer', generateMessage('server', 'Hey, welcome to converse'));
+  socket.broadcast.emit('messageFromServer', generateMessage('server', 'A new user has joined us'));
 
-  socket.on('messageFromUser', (data) => {
-    console.log('server - messageFromUser');
-    console.log(data);
-  });
+  // socket.on('messageFromUser', (data) => {
+  //   console.log('server - messageFromUser');
+  //   console.log(data);
+  // });
+  //
+  // socket.on('toAllMessageFromUser', (data) => {
+  //   console.log('server - toAllMessageFromUser');
+  //   console.log(data);
+  //   io.emit('messageFromServer', data);
+  // });
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
+    socket.broadcast.emit('messageFromServer', generateMessage('server', 'User has left'));
   });
 });
 

@@ -11,9 +11,17 @@ export class MessageList extends React.Component {
     socket.on('connect', function () {
       console.log('Connected to server');
 
-      socket.emit('messageFromUser', {
-        text: 'yo, this is client'
-      })
+      // socket.emit('messageFromUser', {
+      //   text: 'Hey'
+      // });
+
+      // socket.emit('toAllMessageFromUser', {
+      //   text: 'this is a toAll. the aliens are here'
+      // });
+
+      // socket.emit('broadcastMessage', {
+      //   text: 'this is a broadcast. the aliens are here'
+      // });
     });
 
     socket.on('disconnect', function () {
@@ -21,7 +29,7 @@ export class MessageList extends React.Component {
     });
 
     socket.on('messageFromServer', function (data) {
-      console.log('New messageFromServer');
+      console.log('messageFromServer');
       console.log(data);
     });
   }

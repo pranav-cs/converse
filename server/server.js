@@ -3,11 +3,15 @@ const socketIO = require('socket.io');
 const path = require('path');
 const { Server } = require('http');
 
+const { generateMessage } = require('./utils/message');
+const { isRealString } = require('./utils/validation');
+const { Users } = require('./models/users');
+
 const app = express();
 const server = Server(app);
 const io = socketIO(server);
 
-const { generateMessage } = require('./utils/message');
+const users = new Users();
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,23 +20,40 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 io.on('connection', (socket) => {
   console.log('New user connected');
 
-  socket.emit('messageFromServer', generateMessage('server', 'Hey, welcome to converse'));
-  socket.broadcast.emit('messageFromServer', generateMessage('server', 'A new user has joined us'));
+  socket.on('messageFromUser', (data, callback) => {
+    console.log('server - messageFromUser');
+    console.log(data);
+    io.to(data.room).emit('newMessage', generateMessage(data.name, data.text));
+    callback();
+  });
 
-  // socket.on('messageFromUser', (data) => {
-  //   console.log('server - messageFromUser');
-  //   console.log(data);
-  // });
-  //
-  // socket.on('toAllMessageFromUser', (data) => {
-  //   console.log('server - toAllMessageFromUser');
-  //   console.log(data);
-  //   io.emit('messageFromServer', data);
-  // });
+  socket.on('join room', (data, callback) => {
+    if (!isRealString(data.from) || !isRealString(data.room)) {
+      return callback('From name and room name are required.');
+    }
+
+    socket.join(data.room);
+    // remove from any old room
+    users.removeUser(socket.id);
+    // add to new room
+    users.addUser(socket.id, data.from, data.room);
+
+    io.to(data.room).emit('updateUserList', users.getUserList(data.room));
+
+    socket.emit('welcomeMessage', generateMessage('server', 'Hey, welcome to converse'));
+    socket.broadcast.to(data.room).emit('newArrival', generateMessage('server', `${data.from} has joined.`));
+
+    callback('Joined succesfully!');
+  });
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
-    socket.broadcast.emit('messageFromServer', generateMessage('server', 'User has left'));
+    const user = users.removeUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit('updateUserList', users.getUserList(user.room));
+      io.to(user.room).emit('memberLeft', generateMessage('server', `${user.name} has left.`));
+    }
   });
 });
 

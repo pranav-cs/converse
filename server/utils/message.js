@@ -1,6 +1,6 @@
-const generateMessage = (from, message) => {
+const generateMessage = (name, message) => {
   return {
-    from,
+    name,
     message,
     time: new Date().getTime()
   };

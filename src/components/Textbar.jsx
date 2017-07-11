@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import io from 'socket.io-client';
 
-const socket = io();
+import { startLeaveRoom, newMessage } from 'actions';
 
-export class MessageList extends React.Component {
+import { socket } from 'Login';
+
+export class Textbar extends React.Component {
   constructor(props) {
     super(props);
+
+    const { dispatch } = this.props;
 
     socket.on('connect', () => {
       console.log('Connected to server');
     });
 
     socket.on('disconnect', () => {
+      dispatch(startLeaveRoom());
       console.log('Disconnected from server');
     });
 
@@ -44,42 +48,33 @@ export class MessageList extends React.Component {
 
   onSend(e) {
     e.preventDefault();
+    const message = this.refs.message.value;
+
+    const { dispatch, name, room } = this.props;
+    dispatch(newMessage(message, name, room));
+    this.refs.message.value = '';
 
     socket.emit('messageFromUser', {
-      from: 'client',
-      text: this.refs.message.value,
-      room: this.refs.room.value,
-      time: new Date().getTime()
+      message,
+      name,
+      room
     }, () => {
       console.log('Sent succesfully!');
     });
   }
-
-  onJoinRoom(e) {
-    e.preventDefault();
-
-    const data = {
-      from: 'client',
-      room: this.refs.room.value,
-      time: new Date().getTime()
-    };
-
-    socket.emit('join room', data, (result) => {
-      console.log(result);
-    });
-  }
-
   render() {
     return (
-      <div>
-        <h1>Converse</h1>
-        <input name="message" ref='message' type="text" placeholder="Message" autoFocus />
+      <div id='textbar'>
+        <input name="message" ref='message' type="text" placeholder="Type message here" autoFocus />
         <button onClick={this.onSend.bind(this)}>Send</button>
-        <input name="room" ref='room' type="text" placeholder='Room name' autoFocus />
-        <button onClick={this.onJoinRoom.bind(this)}>Join Room</button>
       </div>
     );
   }
 }
 
-export default connect()(MessageList);
+export default connect((state) => {
+  return {
+    name: state.name,
+    room: state.room
+  }
+})(Textbar);

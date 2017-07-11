@@ -23,27 +23,32 @@ io.on('connection', (socket) => {
   socket.on('messageFromUser', (data, callback) => {
     console.log('server - messageFromUser');
     console.log(data);
-    io.to(data.room).emit('newMessage', generateMessage(data.name, data.text));
+    const user = users.getUser(socket.id);
+
+    if (user && isRealString(data.message)) {
+      io.to(user.room).emit('newMessage', generateMessage(user.name, data.message));
+    }
+
     callback();
   });
 
   socket.on('join room', (data, callback) => {
-    if (!isRealString(data.from) || !isRealString(data.room)) {
-      return callback('From name and room name are required.');
+    if (!isRealString(data.name) || !isRealString(data.room)) {
+      return callback(false); // 'From name and room name are required.'
     }
 
     socket.join(data.room);
     // remove from any old room
     users.removeUser(socket.id);
     // add to new room
-    users.addUser(socket.id, data.from, data.room);
+    users.addUser(socket.id, data.name, data.room);
 
     io.to(data.room).emit('updateUserList', users.getUserList(data.room));
 
     socket.emit('welcomeMessage', generateMessage('server', 'Hey, welcome to converse'));
-    socket.broadcast.to(data.room).emit('newArrival', generateMessage('server', `${data.from} has joined.`));
+    socket.broadcast.to(data.room).emit('newArrival', generateMessage('server', `${data.name} has joined.`));
 
-    callback('Joined succesfully!');
+    callback(true); //'Joined succesfully!'
   });
 
   socket.on('disconnect', () => {

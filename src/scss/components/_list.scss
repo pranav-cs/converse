@@ -1,9 +1,13 @@
 #list {
-  height: 80%;
+  //height: 80%;
   width: $hundred-percent;
   margin: 0px;
 
   background: inherit;
+
+  position: absolute;
+  bottom: 50px;
+  top: 0px;
 
   p {
     padding: 0px;

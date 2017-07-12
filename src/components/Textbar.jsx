@@ -66,7 +66,7 @@ export class Textbar extends React.Component {
     return (
       <div id='textbar'>
         <input name="message" ref='message' type="text" placeholder="Type message here" autoFocus />
-        <button onClick={this.onSend.bind(this)}>Send</button>
+        <button onClick={this.onSend.bind(this)}>Go</button>
       </div>
     );
   }

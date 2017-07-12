@@ -1,12 +1,63 @@
 #textbar {
-  height: 70px;
-  width: $hundred-percent;
-  margin: 0px;
+  height: 50px;
 
-  background-color: inherit;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 
-  color: $color;
+  input {
+    width: 80%;
 
-  position: fixed;
-  bottom: 5px;
+    background-color: inherit;
+    font-family: inherit;
+    color: $color;
+
+    font-size: $login-input-font-size;
+
+    padding: 7px 11px 11px;
+
+    display: inline-block;
+
+    border: 0px;
+    border-top: 3px solid $other-color;
+    border-right: 3px solid $other-color;
+    outline: none;
+
+    //tablets - small devices only
+    @media (min-width: 768px) {
+      font-size: $login-input-font-size-tablet;
+    }
+
+    // desktops and above - medium and large devices
+    @media (min-width: 992px) {
+      font-size: $login-input-font-size-desktop;
+    }
+  }
+
+  button {
+    background-color: $other-color;
+    color: $background-color;
+
+    font-size: $login-button-font-size;
+    font-family: inherit;
+    width: 20%;
+
+    padding: 10px;
+
+    display: inline-block;
+
+    border: 0px;
+    outline: none;
+
+    //tablets - small devices only
+    @media (min-width: 768px) {
+      font-size: $login-button-font-size-tablet;
+    }
+
+    // desktops and above - medium and large devices
+    @media (min-width: 992px) {
+      font-size: $login-button-font-size-desktop;
+    }
+  }
 }

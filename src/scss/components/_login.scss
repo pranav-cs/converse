@@ -1,0 +1,115 @@
+#login {
+  height: 100%;
+  width: $hundred-percent;
+  margin: 0px;
+
+  background-color: $background-color;
+
+  color: $color;
+
+  #header {
+    width: $hundred-percent;
+    margin: 0px;
+    padding: $header-padding;
+    text-align: center;
+
+    color: inherit;
+
+    font-family: $font-family;
+    font-size: $header-font-size;
+
+    background-color: inherit;
+
+    //tablets - small devices only
+    @media (min-width: 768px) {
+      font-size: $header-font-size-tablet;
+      padding: $header-padding-tablet;
+    }
+
+    // desktops and above - medium and large devices
+    @media (min-width: 992px) {
+      font-size: $header-font-size-desktop;
+      padding: $header-padding-desktop;
+    }
+
+    p {
+      margin: 0px;
+      padding: 0px;
+
+      background-color: inherit;
+      color: inherit;
+    }
+  }
+
+  #form {
+    width: $login-form-width;
+    margin: $login-form-margin;
+    font-family: $font-family;
+
+    background-color: inherit;
+    color: inherit;
+
+    //tablets - small devices only
+    @media (min-width: 768px) {
+      width: $login-form-width-tablet;
+      margin: $login-form-margin-tablet;
+    }
+
+    // desktops and above - medium and large devices
+    @media (min-width: 992px) {
+      width: $login-form-width-desktop;
+      margin: $login-form-margin-desktop;
+    }
+
+    input {
+      font-family: inherit;
+      background-color: inherit;
+      width: $hundred-percent;
+      font-size: $login-input-font-size;
+
+      color: inherit;
+
+      padding: 11px;
+      margin: 13px 0px;
+
+      border: 0px;
+      border-bottom: 5px solid $other-color;
+      outline: none;
+
+      //tablets - small devices only
+      @media (min-width: 768px) {
+        font-size: $login-input-font-size-tablet;
+      }
+
+      // desktops and above - medium and large devices
+      @media (min-width: 992px) {
+        font-size: $login-input-font-size-desktop;
+      }
+    }
+
+    button {
+      background-color: $other-color;
+      color: $background-color;
+
+      font-size: $login-button-font-size;
+      font-family: inherit;
+      width: $hundred-percent;
+
+      padding: 10px;
+      margin: 10px 0px;
+
+      border: 0px;
+      outline: none;
+
+      //tablets - small devices only
+      @media (min-width: 768px) {
+        font-size: $login-button-font-size-tablet;
+      }
+
+      // desktops and above - medium and large devices
+      @media (min-width: 992px) {
+        font-size: $login-button-font-size-desktop;
+      }
+    }
+  }
+}

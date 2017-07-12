@@ -1,8 +1,35 @@
 $background-color: white;
-$font-family: 'Palatino Linotype';
+
+$font-family: 'Source Sans Pro', 'Palatino Linotype' sans-serif;
 
 $hundred-percent: 100%;
 
 $color: black;
+$other-color: #3a7979;
 
+// header
 $header-font-size: 40px;
+$header-font-size-tablet: 50px;
+$header-font-size-desktop: 50px;
+
+$header-padding: 50px 0px 40px;
+$header-padding-tablet: 60px 0px 40px;
+$header-padding-desktop: 70px 0px 40px;
+
+// login form
+
+$login-form-width: 90%;
+$login-form-width-tablet: 50%;
+$login-form-width-desktop: 40%;
+
+$login-form-margin: 0px auto;
+$login-form-margin-tablet: 0px auto;
+$login-form-margin-desktop: 0px auto;
+
+$login-input-font-size: 22px;
+$login-input-font-size-tablet: 24px;
+$login-input-font-size-desktop: 23px;
+
+$login-button-font-size: 22px;
+$login-button-font-size-tablet: 24px;
+$login-button-font-size-desktop: 23px;

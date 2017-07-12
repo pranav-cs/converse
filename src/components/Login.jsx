@@ -35,8 +35,6 @@ export class Login extends React.Component {
     };
 
     socket.emit('join room', data, (result) => {
-      console.log('client - join room');
-      console.log(result);
       if (result) {
         dispatch(startEnterRoom(data.name, data.room));
       }
@@ -45,14 +43,14 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <div id='start'>
+      <div id='login'>
         <div id='header'>
-          <p>Converse</p>
+          <p>Pangolin</p>
         </div>
         <div id='form'>
           <input name="name" ref='name' type="text" placeholder='Enter your name' autoFocus />
           <input name="room" ref='room' type="text" placeholder='Enter room name' autoFocus />
-          <button onClick={this.onJoinRoom.bind(this)}>Join Room</button>
+          <button onClick={this.onJoinRoom.bind(this)}>Join the room!</button>
         </div>
       </div>
     );

@@ -1,3 +1,12 @@
 #list {
-  
+  height: 80%;
+  width: $hundred-percent;
+  margin: 0px;
+
+  background: inherit;
+
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
 }

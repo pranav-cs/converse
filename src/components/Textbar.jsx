@@ -76,5 +76,5 @@ export default connect((state) => {
   return {
     name: state.name,
     room: state.room
-  }
+  };
 })(Textbar);

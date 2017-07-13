@@ -6,9 +6,8 @@ export default class Message extends React.Component {
 
     return (
       <div id='message'>
-        <p>Message {message}</p>
-        <p>Name {name}</p>
-        <p>Room {room}</p>
+        <p id='name'>{name}</p>
+        <p id='msg'>{message}</p>
       </div>
     );
   }

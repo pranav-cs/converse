@@ -25,11 +25,13 @@ export class Textbar extends React.Component {
       console.log(data);
     });
 
+// TODO: redux a new arrival
     socket.on('newArrival', (data) => {
       console.log('newArrival');
       console.log(data);
     });
 
+    // TODO: redux a left member
     socket.on('memberLeft', (data) => {
       console.log('memberLeft');
       console.log(data);
@@ -39,10 +41,9 @@ export class Textbar extends React.Component {
       console.log('updateUserList');
       console.log(users);
     });
-
+// TODO: redux a new message
     socket.on('newMessage', (data) => {
-      console.log('newMessage');
-      console.log(data);
+      dispatch(newMessage(data.message, data.name));
     });
   }
 
@@ -51,8 +52,6 @@ export class Textbar extends React.Component {
     const message = this.refs.message.value;
 
     const { dispatch, name, room } = this.props;
-    dispatch(newMessage(message, name, room));
-    this.refs.message.value = '';
 
     socket.emit('messageFromUser', {
       message,
@@ -60,6 +59,8 @@ export class Textbar extends React.Component {
       room
     }, () => {
       console.log('Sent succesfully!');
+      dispatch(newMessage(message, name, room));
+      this.refs.message.value = '';
     });
   }
   render() {

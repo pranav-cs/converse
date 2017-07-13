@@ -1,7 +1,7 @@
 #list {
-  //height: 80%;
   width: $hundred-percent;
   margin: 0px;
+  padding-top: 20px;
 
   background: inherit;
 
@@ -12,5 +12,18 @@
   p {
     padding: 0px;
     margin: 0px;
+  }
+
+  #empty {
+    background-color: inherit;
+    font-family: inherit;
+    color: $color;
+
+    text-align: center;
+
+    padding: 5px;
+    margin: 5em auto;
+
+    font-size: $login-input-font-size;
   }
 }

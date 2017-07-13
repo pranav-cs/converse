@@ -37,3 +37,10 @@ export const newMessage = (message, name, room) => {
     room
   };
 };
+
+export const updateUserList = (users) => {
+  return {
+    type: 'UPDATE_USER_LIST',
+    users
+  };
+};

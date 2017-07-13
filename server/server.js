@@ -21,12 +21,12 @@ io.on('connection', (socket) => {
   console.log('New user connected');
 
   socket.on('messageFromUser', (data, callback) => {
-    console.log('server - messageFromUser');
-    console.log(data);
     const user = users.getUser(socket.id);
+    console.log('messageFromUser');
+    console.log(user);
 
     if (user && isRealString(data.message)) {
-      io.to(user.room).emit('newMessage', generateMessage(user.name, data.message));
+      socket.to(user.room).emit('newMessage', generateMessage(user.name, data.message, user.room));
     }
 
     callback();
@@ -45,8 +45,8 @@ io.on('connection', (socket) => {
 
     io.to(data.room).emit('updateUserList', users.getUserList(data.room));
 
-    socket.emit('welcomeMessage', generateMessage('server', 'Hey, welcome to converse'));
-    socket.broadcast.to(data.room).emit('newArrival', generateMessage('server', `${data.name} has joined.`));
+    socket.emit('welcomeMessage', generateMessage('Server', 'Hey, welcome to converse', data.room));
+    socket.broadcast.to(data.room).emit('newArrival', generateMessage('Server', `${data.name} has joined.`, data.room));
 
     callback(true); //'Joined succesfully!'
   });
@@ -57,7 +57,7 @@ io.on('connection', (socket) => {
 
     if (user) {
       io.to(user.room).emit('updateUserList', users.getUserList(user.room));
-      io.to(user.room).emit('memberLeft', generateMessage('server', `${user.name} has left.`));
+      io.to(user.room).emit('memberLeft', generateMessage('Server', `${user.name} has left.`, user.room));
     }
   });
 });

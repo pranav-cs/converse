@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { startLeaveRoom, newMessage } from 'actions';
+import { startLeaveRoom, newMessage, updateUserList } from 'actions';
 
 import { socket } from 'Login';
 
@@ -9,7 +9,7 @@ export class Textbar extends React.Component {
   constructor(props) {
     super(props);
 
-    const { dispatch } = this.props;
+    const { dispatch, name, room } = this.props;
 
     socket.on('connect', () => {
       console.log('Connected to server');
@@ -21,29 +21,25 @@ export class Textbar extends React.Component {
     });
 
     socket.on('welcomeMessage', (data) => {
-      console.log('welcomeMessage');
-      console.log(data);
+      dispatch(newMessage(data.message, data.name, data.room));
     });
 
-// TODO: redux a new arrival
     socket.on('newArrival', (data) => {
-      console.log('newArrival');
-      console.log(data);
+      dispatch(newMessage(data.message, data.name, data.room));
     });
 
-    // TODO: redux a left member
     socket.on('memberLeft', (data) => {
-      console.log('memberLeft');
-      console.log(data);
+      dispatch(newMessage(data.message, data.name, data.room));
     });
 
     socket.on('updateUserList', (users) => {
-      console.log('updateUserList');
-      console.log(users);
+      dispatch(updateUserList(users));
     });
-// TODO: redux a new message
+
     socket.on('newMessage', (data) => {
-      dispatch(newMessage(data.message, data.name));
+      console.log('newMessage');
+      console.log(data);
+      dispatch(newMessage(data.message, data.name, data.room));
     });
   }
 

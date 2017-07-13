@@ -1,11 +1,11 @@
-#message {
+.message {
   width: $hundred-percent;
   margin: 0px;
   padding: 10px 30px;
 
   background-color: inherit;
 
-  #name {
+  .name {
     font-weight: bold;
     font-family: inherit;
     color: $color;
@@ -22,7 +22,7 @@
     }
   }
 
-  #msg {
+  .msg {
     font-family: inherit;
     color: $color;
     font-size: $login-input-font-size;

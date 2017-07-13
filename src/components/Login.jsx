@@ -45,11 +45,11 @@ export class Login extends React.Component {
     return (
       <div id='login'>
         <div id='header'>
-          <p>Pangolin</p>
+          <p><i className="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;Pangolin</p>
         </div>
         <div id='form'>
           <input name="name" ref='name' type="text" placeholder='Enter your name' autoFocus />
-          <input name="room" ref='room' type="text" placeholder='Enter room name' autoFocus />
+          <input name="room" ref='room' type="text" placeholder='Enter room name' />
           <button onClick={this.onJoinRoom.bind(this)}>Join the room!</button>
         </div>
       </div>

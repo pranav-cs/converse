@@ -32,10 +32,6 @@ export class Textbar extends React.Component {
       dispatch(newMessage(data.message, data.name, data.room));
     });
 
-    socket.on('updateUserList', (users) => {
-      dispatch(updateUserList(users));
-    });
-
     socket.on('newMessage', (data) => {
       console.log('newMessage');
       console.log(data);
@@ -57,13 +53,14 @@ export class Textbar extends React.Component {
       console.log('Sent succesfully!');
       dispatch(newMessage(message, name, room));
       this.refs.message.value = '';
+      document.getElementById('message-input').focus();
     });
   }
   render() {
     return (
       <div id='textbar'>
-        <input name="message" ref='message' type="text" placeholder="Type message here" autoFocus />
-        <button onClick={this.onSend.bind(this)}>Go</button>
+        <input id="message-input" name="message" ref='message' type="text" placeholder="Type message here" autoFocus />
+        <button onClick={this.onSend.bind(this)}><i className="fa fa-chevron-right" aria-hidden="true"></i></button>
       </div>
     );
   }

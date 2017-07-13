@@ -22,8 +22,6 @@ io.on('connection', (socket) => {
 
   socket.on('messageFromUser', (data, callback) => {
     const user = users.getUser(socket.id);
-    console.log('messageFromUser');
-    console.log(user);
 
     if (user && isRealString(data.message)) {
       socket.to(user.room).emit('newMessage', generateMessage(user.name, data.message, user.room));

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import List from 'List';
 import Textbar from 'Textbar';
+//import Sidebar from 'Sidebar';
 
 export class Room extends React.Component {
   render() {

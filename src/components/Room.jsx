@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import List from 'List';
 import Textbar from 'Textbar';
-//import MaxSidebar from 'MaxSidebar';
-import MaxSidebar from 'react-sidebar';
+import SidebarContent from 'SidebarContent';
+import ReactSidebar from 'react-sidebar';
 
 const styles = {
   contentHeaderMenuLink: {
@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-const mql = window.matchMedia(`(min-width: 800px)`);
+const mql = window.matchMedia(`(min-width: 900px)`);
 
 export class Room extends React.Component {
   constructor(props) {
@@ -54,16 +54,32 @@ export class Room extends React.Component {
    });
  }
 
- toggleOpen(ev) {
+ toggleOpen(e) {
    this.setState({ open: !this.state.open });
 
-   if (ev) {
-     ev.preventDefault();
+   if (e) {
+     e.preventDefault();
    }
-   //!this.state.docked &&
- }
+  }
+
+  renderSideButton() {
+    if (!this.state.docked) {
+      return (
+        <div>
+          <button onClick={this.toggleOpen.bind(this)} style={styles.contentHeaderMenuLink}>Menu</button>
+        </div>
+      );
+    }
+  }
+
   render() {
-    const sidebar = <h1>this is the sidebar</h1>;
+    const sidebar = (
+      <div>
+        <h1>Pangolin {this.renderSideButton()}</h1>
+        <SidebarContent />
+      </div>
+    );
+
     const sidebarProps = {
          sidebar,
          docked: this.state.docked,
@@ -72,15 +88,13 @@ export class Room extends React.Component {
        };
 
     return (
-      <MaxSidebar {...sidebarProps}>
+      <ReactSidebar {...sidebarProps}>
+        {this.renderSideButton()}
         <div id="room">
-          <div>
-            <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>
-             <span>Responsive React Sidebar</span>
-          </div>
-          <h1>here lies the main content</h1>
+          <List />
+          <Textbar />
         </div>
-      </MaxSidebar>
+      </ReactSidebar>
     );
   }
 }

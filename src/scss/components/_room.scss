@@ -7,9 +7,8 @@
 
   #sidebar {
     height: 100%;
-    width: 20%;
-
-    min-width: 300px;
+    //min-width: 280px;
+    width: 25%;
 
     background-color: rgb(61, 68, 64);
 
@@ -18,8 +17,7 @@
 
     display: inline-block;
 
-    overflow-x: hidden;
-    transition: 0.5s;
+    overflow: hidden;
 
     //tablets - small devices only
     @media (min-width: 768px) {
@@ -28,8 +26,8 @@
   }
 
   #main {
-    width: 80%;
-    height: 100%;
+    width: 100%;
+    height: 90%;
 
     padding: 0px;
     margin: 0px;
@@ -40,7 +38,8 @@
 
     //tablets - small devices only
     @media (min-width: 768px) {
-
+      width: 75%;
+      height: 100%;
     }
   }
 }

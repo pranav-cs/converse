@@ -8,3 +8,6 @@ contentHeaderMenuLink: {
 content: {
   padding: '16px',
 },
+
+
+<button onClick={this.onSend.bind(this)}><i className="fa fa-chevron-right" aria-hidden="true"></i></button>

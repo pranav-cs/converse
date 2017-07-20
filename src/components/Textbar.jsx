@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import $ from 'jquery';
 
 import { startLeaveRoom, newMessage, updateUserList } from 'actions';
 
@@ -33,14 +34,23 @@ export class Textbar extends React.Component {
     });
 
     socket.on('newMessage', (data) => {
-      console.log('newMessage');
-      console.log(data);
       dispatch(newMessage(data.message, data.name, data.room));
+    });
+
+    socket.on('updateUserList', (users) => {
+      dispatch(updateUserList(users));
     });
   }
 
-  onSend(e) {
-    e.preventDefault();
+  componentDidMount() {
+    $('#message-input').keypress((e) => {
+      if (e.which === 13) {
+        this.onSend();
+      }
+    });
+  }
+
+  onSend() {
     const message = this.refs.message.value;
 
     const { dispatch, name, room } = this.props;
@@ -56,11 +66,11 @@ export class Textbar extends React.Component {
       document.getElementById('message-input').focus();
     });
   }
+
   render() {
     return (
       <div id='textbar'>
         <input id="message-input" name="message" ref='message' type="text" placeholder="Type message here" autoFocus />
-        <button onClick={this.onSend.bind(this)}><i className="fa fa-chevron-right" aria-hidden="true"></i></button>
       </div>
     );
   }

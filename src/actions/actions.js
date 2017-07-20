@@ -48,6 +48,6 @@ export const updateUserList = (users) => {
 export const findIfMobile = () => {
   return {
     type: 'UPDATE_IS_MOBILE',
-    isMobile: window.matchMedia('(max-width: 768px)').matches
+    isMobile: window.matchMedia('(max-width: 767px)').matches
   };
 };

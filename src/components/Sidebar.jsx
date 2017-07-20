@@ -16,9 +16,9 @@ export class Sidebar extends React.Component {
         );
       }
 
-      return otherUsers.map(({ user }) => {
+      return otherUsers.map((item) => {
         return (
-          <Member key={count++} {...user} />
+          <Member key={count++} user={item} />
         );
       });
     };

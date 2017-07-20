@@ -1,5 +1,5 @@
 {
-  "name": "converse",
+  "name": "pangolin",
   "version": "1.0.0",
   "description": "a simple chat app for humans",
   "main": "index.js",

@@ -1,31 +1,4 @@
 #sidebar {
-  width: $hundred-percent;
-  margin: 0px;
-  padding: 20px 0px;
-
-  background: inherit;
-
-  position: absolute;
-  bottom: 70px;
-  top: 0px;
-
-  overflow-y: auto;
-
-  p {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  #empty {
-    background-color: inherit;
-    font-family: inherit;
-    color: $color;
-
-    text-align: center;
-
-    padding: 5px;
-    margin: 5em auto;
-
-    font-size: $login-input-font-size;
-  }
+  padding: 15px;
+  background-color: blue;
 }

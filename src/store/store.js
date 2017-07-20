@@ -1,13 +1,14 @@
 import { combineReducers, applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { nameReducer, roomReducer, messagesReducer, otherUsersReducer } from 'reducers';
+import { nameReducer, roomReducer, messagesReducer, otherUsersReducer, isMobileReducer } from 'reducers';
 
 export const configure = (initialState = {}) => {
   const reducer = combineReducers({
     name: nameReducer,
     room: roomReducer,
     otherUsers: otherUsersReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
+    isMobile: isMobileReducer
   });
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

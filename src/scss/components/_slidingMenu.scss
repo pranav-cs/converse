@@ -1,0 +1,20 @@
+#slidingMenu {
+    height: 100%;
+    width: 300px;
+    display: none;
+
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    //right: 0;
+    bottom: 0;
+
+    background-color: green;
+
+    padding: 15px;
+    padding-top: 60px;
+
+    overflow-x: hidden;
+    transition: 0.5s;
+}

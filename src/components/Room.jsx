@@ -1,29 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import $ from 'jquery';
+
 import List from 'List';
 import Textbar from 'Textbar';
 import Sidebar from 'Sidebar';
 import Topbar from 'Topbar';
+import SlidingMenu from 'SlidingMenu';
 
 import { findIfMobile } from 'actions';
 
 export class Room extends React.Component {
+  constructor(props) {
+    super(props);
+    $(window).resize(() => {
+      const { dispatch } = this.props;
+      dispatch(findIfMobile());
+    });
+  }
+
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(findIfMobile());
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(findIfMobile());
-    //window.addEventListener('onresize', dispatch(findIfMobile()));
-  }
-
-  componentWillUnmount() {
-    const { dispatch } = this.props;
-    dispatch(findIfMobile());
-    //window.removeEventListener('onresize', dispatch(findIfMobile()));
   }
 
   renderSidemenuOrTopbar() {
@@ -40,8 +39,11 @@ export class Room extends React.Component {
     return (
       <div id='room'>
         {this.renderSidemenuOrTopbar()}
-        <List />
-        <Textbar />
+        <SlidingMenu />
+        <div id='main'>
+          <List />
+          <Textbar />
+        </div>
       </div>
     );
   }

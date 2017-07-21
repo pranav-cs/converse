@@ -3,25 +3,57 @@ import { connect } from 'react-redux';
 
 import $ from 'jquery';
 
+import { socket } from 'Login';
+
 import List from 'List';
 import Textbar from 'Textbar';
 import Sidebar from 'Sidebar';
 import Topbar from 'Topbar';
 import SlidingMenu from 'SlidingMenu';
 
-import { findIfMobile } from 'actions';
+import { startLeaveRoom, newMessage, updateUserList, findIfMobile } from 'actions';
 
 export class Room extends React.Component {
   constructor(props) {
     super(props);
-    $(window).resize(() => {
-      const { dispatch } = this.props;
-      dispatch(findIfMobile());
+
+    const { dispatch } = this.props;
+
+    socket.on('disconnect', () => {
+      dispatch(startLeaveRoom());
+      console.log('Disconnected from server');
+    });
+
+    socket.on('welcomeMessage', (data) => {
+      dispatch(newMessage(data.message, data.name, data.room));
+    });
+
+    socket.on('newArrival', (data) => {
+      dispatch(newMessage(data.message, data.name, data.room));
+    });
+
+    socket.on('memberLeft', (data) => {
+      dispatch(newMessage(data.message, data.name, data.room));
+    });
+
+    socket.on('newMessage', (data) => {
+      dispatch(newMessage(data.message, data.name, data.room));
+    });
+
+    socket.on('updateUserList', (users) => {
+      console.log('11111111111111111');
+      console.log(users);
+      dispatch(updateUserList(users));
     });
   }
 
   componentWillMount() {
     const { dispatch } = this.props;
+
+    $(window).resize(() => {
+      dispatch(findIfMobile());
+    });
+
     dispatch(findIfMobile());
   }
 

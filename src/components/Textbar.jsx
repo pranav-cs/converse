@@ -1,43 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import $ from 'jquery';
 
-import { startLeaveRoom, newMessage, updateUserList } from 'actions';
+import $ from 'jquery';
 
 import { socket } from 'Login';
 
+import { newMessage } from 'actions';
+
 export class Textbar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { dispatch, name, room } = this.props;
-
-    socket.on('connect', () => {
-      console.log('Connected to server');
-    });
-
-    socket.on('disconnect', () => {
-      dispatch(startLeaveRoom());
-      console.log('Disconnected from server');
-    });
-
-    socket.on('welcomeMessage', (data) => {
-      dispatch(newMessage(data.message, data.name, data.room));
-    });
-
-    socket.on('newArrival', (data) => {
-      dispatch(newMessage(data.message, data.name, data.room));
-    });
-
-    socket.on('memberLeft', (data) => {
-      dispatch(newMessage(data.message, data.name, data.room));
-    });
-
-    socket.on('newMessage', (data) => {
-      dispatch(newMessage(data.message, data.name, data.room));
-    });
-  }
-
   componentDidMount() {
     $('#message-input').keypress((e) => {
       if (e.which === 13) {

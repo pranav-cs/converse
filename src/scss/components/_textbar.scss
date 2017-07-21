@@ -8,10 +8,12 @@
 
   background-color: inherit;
 
+  text-align: center;
+
   input {
     width: 90%;
 
-    background-color: inherit;
+    background-color: #46484a;
     font-family: inherit;
     color: $color;
 
@@ -21,7 +23,7 @@
 
     display: inline-block;
 
-    border: 3px solid $other-color;
+    border: 1.5px solid $other-color;
     outline: none;
 
     //tablets - small devices only

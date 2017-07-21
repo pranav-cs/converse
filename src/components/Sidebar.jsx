@@ -1,24 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { socket } from 'Login';
-
-import { updateUserList } from 'actions';
-
 import Member from 'Member';
 
 export class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    const { dispatch } = this.props;
-
-    socket.on('updateUserList', (users) => {
-      console.log('11111111111111111');
-      console.log(users);
-      dispatch(updateUserList(users));
-    });
-  }
-
   render() {
     const { otherUsers } = this.props;
     let count = 0;

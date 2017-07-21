@@ -18,10 +18,10 @@ export class Login extends React.Component {
       console.log('Disconnected from server');
     });
 
-    socket.on('updateRoomsList', (users) => {
-      console.log('updateRoomsList');
-      console.log(users);
-    });
+    // socket.on('updateRoomsList', (users) => {
+    //   console.log('updateRoomsList');
+    //   console.log(users);
+    // });
   }
 
   onJoinRoom(e) {

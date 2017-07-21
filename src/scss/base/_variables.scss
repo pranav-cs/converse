@@ -1,11 +1,13 @@
-$background-color: white;
-
-$font-family: 'Source Sans Pro', 'Palatino Linotype' sans-serif;
+$font-family-1: 'Cabin', sans-serif;
 
 $hundred-percent: 100%;
 
-$color: #afb1bb;
-$other-color: rgb(177, 209, 224);
+$background-color-1: #36393e;
+$background-color-2: #2f3136;
+
+$bluish-color: rgb(164, 193, 198);
+$off-white-color: #e1e9ec;
+$darker-color: #2a91a2;
 
 // header
 $header-font-size: 40px;
@@ -17,7 +19,6 @@ $header-padding-tablet: 60px 0px 40px;
 $header-padding-desktop: 70px 0px 40px;
 
 // login form
-
 $login-form-width: 90%;
 $login-form-width-tablet: 50%;
 $login-form-width-desktop: 40%;
@@ -35,6 +36,5 @@ $login-button-font-size-tablet: 24px;
 $login-button-font-size-desktop: 23px;
 
 // room
-$room-width: 100%;
-$room-width-tablet: 80%;
-$room-width-desktop: 80%;
+$room-font-size-1: 18px;
+$room-font-size-2: $room-font-size-1 + 2;

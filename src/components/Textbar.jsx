@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import $ from 'jquery';
 
-import { socket } from 'Login';
+import { socket } from 'Container';
 
 import { newMessage } from 'actions';
 

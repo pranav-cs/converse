@@ -3,9 +3,12 @@
 
 // Components
 @import "components/login";
-@import "components/list";
-@import "components/message";
 @import "components/room";
+
+@import "components/message";
+@import "components/member";
+
+@import "components/list";
 @import "components/textbar";
-@import "components/topbar";
-@import "components/slidingMenu";
+
+@import "components/mobileMenu";

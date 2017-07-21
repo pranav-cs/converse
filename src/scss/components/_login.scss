@@ -1,10 +1,9 @@
 #login {
-  height: 100%;
+  height: $hundred-percent;
   width: $hundred-percent;
   margin: 0px;
 
-  background-color: $background-color;
-  color: $color;
+  background-color: $background-color-1;
 
   #header {
     width: $hundred-percent;
@@ -12,9 +11,7 @@
     padding: $header-padding;
     text-align: center;
 
-    color: inherit;
-
-    font-family: $font-family;
+    font-family: $font-family-1;
     font-size: $header-font-size;
 
     background-color: inherit;
@@ -36,17 +33,16 @@
       padding: 0px;
 
       background-color: inherit;
-      color: inherit;
+      color: $off-white-color;
     }
   }
 
   #form {
     width: $login-form-width;
     margin: $login-form-margin;
-    font-family: $font-family;
+    font-family: $font-family-1;
 
     background-color: inherit;
-    color: inherit;
 
     //tablets - small devices only
     @media (min-width: 768px) {
@@ -66,13 +62,13 @@
       width: $hundred-percent;
       font-size: $login-input-font-size;
 
-      color: inherit;
+      color: $off-white-color;
 
       padding: 11px;
       margin: 13px 0px;
 
       border: 0px;
-      border-bottom: 5px solid $other-color;
+      border-bottom: 5px solid $bluish-color;
       outline: none;
 
       //tablets - small devices only
@@ -87,8 +83,8 @@
     }
 
     button {
-      background-color: $other-color;
-      color: $background-color;
+      background-color: $darker-color;
+      color: $off-white-color;
 
       font-size: $login-button-font-size;
       font-family: inherit;

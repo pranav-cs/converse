@@ -7,10 +7,8 @@
 
   #sidebar {
     height: 100%;
-    //min-width: 280px;
-    width: 25%;
 
-    background-color: #2f3136;
+    background-color: $background-color-2;
 
     padding: 15px;
     margin: 0px;
@@ -21,7 +19,12 @@
 
     //tablets - small devices only
     @media (min-width: 768px) {
+      width: 25%;
+    }
 
+    // desktops and above - medium and large devices
+    @media (min-width: 992px) {
+      width: 20%;
     }
   }
 
@@ -32,7 +35,7 @@
     padding: 0px;
     margin: 0px;
 
-    background-color: #36393e;
+    background-color: $background-color-1;
 
     position: relative;
 
@@ -42,6 +45,11 @@
     @media (min-width: 768px) {
       width: 75%;
       height: 100%;
+    }
+
+    // desktops and above - medium and large devices
+    @media (min-width: 992px) {
+      width: 80%;
     }
   }
 }

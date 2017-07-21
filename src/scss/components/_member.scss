@@ -1,30 +1,16 @@
-#textbar {
-  position: absolute;
-  bottom: 20px;
-  left: 0px;
-  right: 0px;
-
-  padding: 10px;
+.member {
+  width: $hundred-percent;
+  margin: 0px;
+  padding: 10px 30px;
 
   background-color: inherit;
 
-  text-align: center;
-
-  input {
-    width: 90%;
-
-    background-color: #46484a;
+  .name {
     font-family: inherit;
     color: $off-white-color;
-
     font-size: $room-font-size-1;
 
-    padding: 8px 15px;
-
-    display: inline-block;
-
-    border: 1.5px solid $bluish-color;
-    outline: none;
+    overflow-wrap: break-word;
 
     //tablets - small devices only
     @media (min-width: 768px) {

@@ -1,29 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import io from 'socket.io-client';
 
 import { startEnterRoom } from 'actions';
 
-export const socket = io();
+import { socket } from 'Container';
 
 export class Login extends React.Component {
-  constructor(props) {
-    super(props);
-
-    socket.on('connect', () => {
-      console.log('Connected to server');
-    });
-
-    socket.on('disconnect', () => {
-      console.log('Disconnected from server');
-    });
-
-    // socket.on('updateRoomsList', (users) => {
-    //   console.log('updateRoomsList');
-    //   console.log(users);
-    // });
-  }
-
   onJoinRoom(e) {
     e.preventDefault();
 

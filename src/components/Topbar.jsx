@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 export class Topbar extends React.Component {
   onShowMenu() {
-    console.log('this burger was clicked');
     document.getElementById('slidingMenu').style.display = 'block';
   }
 

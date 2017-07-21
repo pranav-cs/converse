@@ -6,7 +6,8 @@ export default class Message extends React.Component {
 
     return (
       <div className='message'>
-        <p className='msg'><span className='name'>{name}</span>{message}</p>
+        <p className='name'>{name}</p>
+        <p className='msg'>{message}</p>
       </div>
     );
   }

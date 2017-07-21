@@ -9,7 +9,7 @@ export class Topbar extends React.Component {
   render() {
     return (
       <div id='topbar'>
-        <p><button onClick={this.onShowMenu.bind(this)}><i className="fa fa-bars" aria-hidden="true" /></button>&nbsp;&nbsp;Pangolin</p>
+        <p><i className="fa fa-bars" aria-hidden="true" onClick={this.onShowMenu.bind(this)} />&nbsp;&nbsp;Pangolin</p>
       </div>
     );
   }

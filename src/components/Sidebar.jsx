@@ -5,13 +5,13 @@ import Member from 'Member';
 
 export class Sidebar extends React.Component {
   render() {
-    const { otherUsers } = this.props;
+    const { otherUsers, room } = this.props;
     let count = 0;
 
     const renderMembers = () => {
       if (otherUsers.length === 0) {
         return (
-          <p>There is nobody else here.</p>
+          <p className='member'>There is nobody else here.</p>
         );
       }
 
@@ -24,7 +24,7 @@ export class Sidebar extends React.Component {
 
     return (
       <div id='sidebar'>
-        <p>Pangolin</p>
+        <p className='header'>{room}</p>
         {renderMembers()}
       </div>
     );
@@ -33,6 +33,7 @@ export class Sidebar extends React.Component {
 
 export default connect((state) => {
   return {
+    room: state.room,
     otherUsers: state.otherUsers
   };
 })(Sidebar);

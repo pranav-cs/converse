@@ -46,8 +46,8 @@ io.on('connection', (socket) => {
     console.log('from server');
     console.log(users.getUserList(data.room));
 
-    socket.emit('welcomeMessage', generateMessage('Server', 'Hey, welcome to Pangolin', data.room));
-    socket.broadcast.to(data.room).emit('newArrival', generateMessage('Server', `${data.name} has joined.`, data.room));
+    socket.emit('welcomeMessage', generateMessage('server', 'Hey, welcome to Pangolin', data.room));
+    socket.broadcast.to(data.room).emit('newArrival', generateMessage('server', `${data.name} has joined.`, data.room));
 
     callback(true); //'Joined succesfully!'
   });
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
 
     if (user) {
       io.to(user.room).emit('updateUserList', users.getUserList(user.room));
-      io.to(user.room).emit('memberLeft', generateMessage('Server', `${user.name} has left.`, user.room));
+      io.to(user.room).emit('memberLeft', generateMessage('server', `${user.name} has left.`, user.room));
     }
   });
 });

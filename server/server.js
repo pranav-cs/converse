@@ -40,10 +40,13 @@ io.on('connection', (socket) => {
     users.removeUser(socket.id);
     // add to new room
     users.addUser(socket.id, data.name, data.room);
+    console.log('data.room ', data.room);
 
     io.to(data.room).emit('updateUserList', users.getUserList(data.room));
+    console.log('from server');
+    console.log(users.getUserList(data.room));
 
-    socket.emit('welcomeMessage', generateMessage('Server', 'Hey, welcome to converse', data.room));
+    socket.emit('welcomeMessage', generateMessage('Server', 'Hey, welcome to Pangolin', data.room));
     socket.broadcast.to(data.room).emit('newArrival', generateMessage('Server', `${data.name} has joined.`, data.room));
 
     callback(true); //'Joined succesfully!'

@@ -36,10 +36,6 @@ export class Textbar extends React.Component {
     socket.on('newMessage', (data) => {
       dispatch(newMessage(data.message, data.name, data.room));
     });
-
-    socket.on('updateUserList', (users) => {
-      dispatch(updateUserList(users));
-    });
   }
 
   componentDidMount() {

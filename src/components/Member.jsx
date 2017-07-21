@@ -3,7 +3,6 @@ import React from 'react';
 export default class Member extends React.Component {
   render() {
     const { user } = this.props;
-    console.log(user);
 
     return (
       <div className='member'>
@@ -12,5 +11,3 @@ export default class Member extends React.Component {
     );
   }
 }
-
-// TODO: server not sendun g orioer updateUserList

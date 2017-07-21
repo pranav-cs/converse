@@ -29,7 +29,8 @@ export class SlidingMenu extends React.Component {
 
     return (
       <div id='slidingMenu'>
-        <p className='header'>{room}&nbsp;<i className="fa fa-bars" aria-hidden="true" onClick={this.onCloseMenu.bind(this)} /></p>
+        <i id='closeIcon' className="fa fa-bars" aria-hidden="true" onClick={this.onCloseMenu.bind(this)} />
+        <p className='header'>{room}</p>
         {renderMembers()}
       </div>
     );

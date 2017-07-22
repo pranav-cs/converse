@@ -10,7 +10,8 @@ import { newMessage } from 'actions';
 export class Textbar extends React.Component {
   componentDidMount() {
     $('#message-input').keypress((e) => {
-      if (e.which === 13) {
+      const value = document.getElementById('message-input').value;
+      if (e.which === 13 && value !== '') {
         this.onSend();
       }
     });

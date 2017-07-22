@@ -1,11 +1,15 @@
 .member {
   width: $hundred-percent;
   margin: 0px;
-  padding: 8px 30px;
+  padding: 8px 35px;
 
   background-color: inherit;
 
   text-align: left;
+
+  &:hover {
+    background-color: $invisible-color;
+  }
 
   .name {
     font-family: $font-family-1;

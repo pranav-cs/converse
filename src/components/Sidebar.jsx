@@ -5,7 +5,7 @@ import Member from 'Member';
 
 export class Sidebar extends React.Component {
   render() {
-    const { otherUsers, room } = this.props;
+    const { otherUsers } = this.props;
     let count = 0;
 
     const renderMembers = () => {
@@ -24,7 +24,9 @@ export class Sidebar extends React.Component {
 
     return (
       <div id='sidebar'>
-        <p className='header'>{room}</p>
+        <div className='member title'>
+          <p className='name'>MEMBERS</p>
+        </div>
         {renderMembers()}
       </div>
     );
@@ -33,7 +35,6 @@ export class Sidebar extends React.Component {
 
 export default connect((state) => {
   return {
-    room: state.room,
     otherUsers: state.otherUsers
   };
 })(Sidebar);

@@ -1,0 +1,11 @@
+.title {
+  text-transform: uppercase;
+  text-align: center;
+
+  background-color: inherit;
+
+  // to override the behaviour of member class
+  &:hover {
+    background-color: inherit;
+  }
+}

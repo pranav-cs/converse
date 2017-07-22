@@ -26,7 +26,6 @@ export class Textbar extends React.Component {
       name,
       room
     }, () => {
-      console.log('Sent succesfully!');
       dispatch(newMessage(message, name, room));
       this.refs.message.value = '';
       document.getElementById('message-input').focus();

@@ -35,10 +35,7 @@ export class Room extends React.Component {
 
     if (isMobile) {
       return (
-        <div id='mobileMenu'>
-          <SlidingMenu />
-          <Topbar />
-        </div>
+        <SlidingMenu />
       );
     }
 
@@ -50,6 +47,7 @@ export class Room extends React.Component {
       <div id='room'>
         {this.renderSidemenuOrTopbar()}
         <div id='main'>
+          <Topbar />
           <List />
           <Textbar />
         </div>

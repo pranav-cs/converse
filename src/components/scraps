@@ -1,13 +1,7 @@
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<p id='logo'><i className="fa fa-bars" aria-hidden="true" onClick={this.onShowMenu.bind(this)} />&nbsp;&nbsp;Pangolin</p>
 
-contentHeaderMenuLink: {
-  textDecoration: 'none',
-  color: 'black',
-  padding: 8,
-},
-content: {
-  padding: '16px',
-},
-
+<Topbar />
+<List />
+<Textbar />
 
 <button onClick={this.onSend.bind(this)}><i className="fa fa-chevron-right" aria-hidden="true"></i></button>

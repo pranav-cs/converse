@@ -1,10 +1,14 @@
 #textbar {
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   left: 0px;
   right: 0px;
 
-  padding: 10px;
+  width: 100%;
+  height: 80px;
+
+  padding: 20px 10px;
+  border-top: 1px solid $invisible-color;
 
   background-color: inherit;
 

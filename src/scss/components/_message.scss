@@ -1,6 +1,6 @@
 .message {
   width: $hundred-percent;
-  padding: 8px 30px;
+  padding: 10px 30px;
   margin: 0px;
 
   font-family: $font-family-1;
@@ -21,8 +21,6 @@
     color: $bluish-color;
     font-size: inherit;
 
-    padding-right: 15px;
-
     //tablets - small devices only
     @media (min-width: 768px) {
     }
@@ -37,10 +35,10 @@
     color: $off-white-color;
     font-size: inherit;
 
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     margin: 0px;
 
-    border-bottom: 1px solid #3c4448;
+    border-bottom: 1px solid $invisible-color;
 
     //tablets - small devices only
     @media (min-width: 768px) {

@@ -10,10 +10,12 @@
   left: 0;
   bottom: 0;
 
-  background-color: #2f3136;
+  background-color: $background-color-2;
 
   overflow-x: hidden;
-  transition: 0.3s ease;
+  overflow-y: auto;
+
+  transition: 3s ease;
 
   overflow-wrap: break-word;
 
@@ -21,12 +23,11 @@
 
   box-shadow: 2px 0px 10px 2px rgb(29, 31, 35);
 
-  #closeIcon {
-    position: absolute;
-    top: 20px;
-    right: 30px;
+  .slide {
+    font-size: 25px;
+    text-align: right;
+    padding: 25px 40px;
 
     color: white;
-    font-size: $room-font-size-2;
   }
 }

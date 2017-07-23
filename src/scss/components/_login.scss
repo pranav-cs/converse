@@ -5,6 +5,8 @@
 
   background-color: $background-color-1;
 
+  overflow-y: auto;
+
   #header {
     width: $hundred-percent;
     margin: 0px;
@@ -33,7 +35,7 @@
       padding: 0px;
 
       background-color: inherit;
-      color: white; //$off-white-color;
+      color: white;
     }
   }
 
@@ -62,13 +64,13 @@
       width: $hundred-percent;
       font-size: $login-input-font-size;
 
-      color: $off-white-color;
+      color: white;
 
       padding: 11px;
       margin: 13px 0px;
 
       border: 0px;
-      border-bottom: 5px solid $bluish-color;
+      border-bottom: 5px solid #49bace;
       outline: none;
 
       //tablets - small devices only
@@ -83,8 +85,8 @@
     }
 
     button {
-      background-color: $darker-color;
-      color: $off-white-color;
+      background-color: white;
+      color: $background-color-1;
 
       font-size: $login-button-font-size;
       font-family: inherit;

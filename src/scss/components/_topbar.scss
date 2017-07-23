@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
 
-  #logo {
+  .logo {
     padding: 0px;
     margin: 0px;
 
@@ -24,14 +24,14 @@
     font-family: $font-family-1;
     color: $off-white-color;
     background-color: inherit;
+  }
 
-    #slide {
-      display: inline;
+  .slide {
+    display: inline;
 
-      //tablets - small devices only
-      @media (min-width: 768px) {
-        display: none;
-      }
+    //tablets - small devices only
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 }

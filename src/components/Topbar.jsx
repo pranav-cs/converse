@@ -11,7 +11,7 @@ export class Topbar extends React.Component {
 
     return (
       <div id='topbar'>
-        <p id='logo'><span id='slide'><i className="fa fa-bars" aria-hidden="true" onClick={this.onSlide.bind(this)} />&nbsp;&nbsp;</span>Pangolin&nbsp;&nbsp;|&nbsp;&nbsp;{room}</p>
+        <p className='logo'><span className='slide'><i className="fa fa-bars" aria-hidden="true" onClick={this.onSlide.bind(this)} />&nbsp;&nbsp;</span>Pangolin&nbsp;&nbsp;|&nbsp;&nbsp;{room}</p>
       </div>
     );
   }

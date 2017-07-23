@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Member from 'Member';
 
 export class SlidingMenu extends React.Component {
-  onCloseMenu(e) {
+  onClose(e) {
     e.preventDefault();
     document.getElementById('slidingMenu').style.display = 'none';
   }
@@ -29,8 +29,10 @@ export class SlidingMenu extends React.Component {
 
     return (
       <div id='slidingMenu'>
-        <i id='closeIcon' className="fa fa-bars" aria-hidden="true" onClick={this.onCloseMenu.bind(this)} />
-        <p className='header'>{room}</p>
+        <div className='slide'><i className="fa fa-bars" aria-hidden="true" onClick={this.onClose.bind(this)} /></div>
+        <div className='member title'>
+          <p className='name'>MEMBERS</p>
+        </div>
         {renderMembers()}
       </div>
     );

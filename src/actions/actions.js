@@ -1,4 +1,5 @@
 import { browserHistory } from 'react-router';
+import axios from 'axios';
 
 const enterRoom = (name, room) => {
   return {
@@ -49,5 +50,15 @@ export const findIfMobile = () => {
   return {
     type: 'UPDATE_IS_MOBILE',
     isMobile: window.matchMedia('(max-width: 767px)').matches
+  };
+};
+
+export const checkIfLoggedIn = () => {
+  return () => {
+    return axios.get('/api/users/me').then(() => {
+      return true;
+    }).then(() => {
+      return false;
+    });
   };
 };

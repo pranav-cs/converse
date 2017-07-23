@@ -32,7 +32,7 @@ export class Login extends React.Component {
         <div id='form'>
           <input name="name" ref='name' type="text" placeholder='Enter your name' autoFocus />
           <input name="room" ref='room' type="text" placeholder='Enter room name' />
-          <button onClick={this.onJoinRoom.bind(this)}>Join</button>
+          <button onClick={this.onJoinRoom.bind(this)}>Join the room</button>
         </div>
       </div>
     );

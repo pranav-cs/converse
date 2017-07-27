@@ -14,6 +14,18 @@ export class List extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    document.getElementById('dummy').scrollIntoView({ behavior: 'smooth' });
+  }
+
   render() {
     const { messages } = this.props;
     let count = 0;
@@ -35,6 +47,7 @@ export class List extends React.Component {
     return (
       <div id='list'>
         {renderMessages()}
+        <div id='dummy'></div>
       </div>
     );
   }

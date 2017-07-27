@@ -2,10 +2,15 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 const { Server } = require('http');
+const { ObjectID } = require('mongodb');
 
-const { generateMessage } = require('./utils/message');
-const { isRealString } = require('./utils/validation');
-const { Users } = require('./models/users');
+const { mongoose } = require('./db/mongoose');
+
+const { Message } = require('./models/message');
+const { Room } = require('./models/room');
+const { User } = require('./models/user');
+
+const { authenticate } = require('./middleware/authenticate');
 
 const app = express();
 const server = Server(app);

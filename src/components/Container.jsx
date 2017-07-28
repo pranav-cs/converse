@@ -30,11 +30,6 @@ export class Container extends React.Component {
     socket.on('updateUserList', (users) => {
       dispatch(updateUserList(users));
     });
-
-    // socket.on('updateRoomsList', (users) => {
-    //   console.log('updateRoomsList');
-    //   console.log(users);
-    // });
   }
 
   componentWillMount() {

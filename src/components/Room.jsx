@@ -34,9 +34,7 @@ export class Room extends React.Component {
     const { isMobile } = this.props;
 
     if (isMobile) {
-      return (
-        <SlidingMenu />
-      );
+      return (<SlidingMenu />);
     }
 
     return (<Sidebar />);

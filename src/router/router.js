@@ -3,7 +3,7 @@ import { Route, Router, browserHistory, IndexRoute } from 'react-router';
 
 import Container from 'Container';
 import Login from 'Login';
-import Room from 'Room';
+import Home from 'Home';
 
 // import { checkIfLoggedIn } from 'actions';
 //
@@ -20,7 +20,7 @@ export default (
   <Router history={browserHistory}>
     <Route path="/" component={Container}>
       <IndexRoute component={Login} />
-      <Route path='room' component={Room} />
+      <Route path='home' component={Home} />
     </Route>
   </Router>
 );

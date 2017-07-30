@@ -1,8 +1,8 @@
 export const nameReducer = (state = '', action) => {
   switch (action.type) {
-    case 'ENTER_ROOM':
+    case 'ENTER_HOME':
       return action.name;
-    case 'CLEAR_NAME':
+    case 'LEAVE_HOME':
       return '';
     default:
       return state;

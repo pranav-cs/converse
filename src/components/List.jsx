@@ -6,14 +6,6 @@ import $ from 'jquery';
 import Message from 'Message';
 
 export class List extends React.Component {
-  constructor(props) {
-    super(props);
-
-    $('#list').animate({
-      scrollTop: 0
-    });
-  }
-
   componentDidMount() {
     this.scrollToBottom();
   }

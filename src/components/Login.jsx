@@ -1,24 +1,56 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { startEnterRoom } from 'actions';
+import io from 'socket.io-client';
 
-import { socket } from 'Container';
+import { startEnterHome, startLeaveHome } from 'actions';
+
+export const socket = io();
 
 export class Login extends React.Component {
-  onJoinRoom(e) {
-    e.preventDefault();
+  constructor(props) {
+    super(props);
 
+    const { dispatch } = this.props;
+
+    socket.on('connect', () => {
+      console.log('Connected to server');
+    });
+
+    socket.on('disconnect', () => {
+      dispatch(startLeaveHome());
+      console.log('Disconnected from server');
+    });
+  }
+
+  onLogin(e) {
+    e.preventDefault();
     const { dispatch } = this.props;
 
     const data = {
       name: this.refs.name.value,
-      room: this.refs.room.value
+      password: this.refs.password.value
     };
 
-    socket.emit('join room', data, (result) => {
+    socket.emit('login', data, (result) => {
       if (result) {
-        dispatch(startEnterRoom(data.name, data.room));
+        dispatch(startEnterHome(data.name));
+      }
+    });
+  }
+
+  onSignup(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+
+    const data = {
+      name: this.refs.name.value,
+      password: this.refs.password.value
+    };
+
+    socket.emit('signup', data, (result) => {
+      if (result) {
+        dispatch(startEnterHome(data.name));
       }
     });
   }
@@ -30,9 +62,9 @@ export class Login extends React.Component {
           <p><i className="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;Pangolin</p>
         </div>
         <div id='form'>
-          <input name="name" ref='name' type="text" placeholder='Enter your name' autoFocus />
-          <input name="room" ref='room' type="text" placeholder='Enter room name' />
-          <button onClick={this.onJoinRoom.bind(this)}>Join the room</button>
+          <input ref='name' type="text" placeholder='Enter your name' autoFocus />
+          <input ref='password' type="password" placeholder='Enter password' />
+          <button id='login' onClick={this.onLogin.bind(this)}>Login</button>
         </div>
       </div>
     );

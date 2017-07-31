@@ -1,19 +1,23 @@
 import { combineReducers, applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { nameReducer, roomsReducer, authenticatedReducer, chatroomsReducer, isMobileReducer } from 'reducers';
+
+import { nameReducer, roomsReducer, authReducer } from 'userReducers';
+import { chatroomsReducer } from 'chatroomsReducers';
+import { isMobileReducer } from 'reducers';
 
 export const configure = (initialState = {}) => {
   const reducer = combineReducers({
     user: {
       name: nameReducer,
       rooms: roomsReducer,
-      authenticated: authenticatedReducer
+      auth: authReducer
     },
     chatrooms: chatroomsReducer,
     isMobile: isMobileReducer
   });
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
   const store = createStore(
     reducer,
     initialState,
@@ -31,6 +35,7 @@ export const configure = (initialState = {}) => {
   },
   chatrooms: [{
   room: string,
+  users: [other users],
   messages: [{ text, author, time }]
 }]
 }*/

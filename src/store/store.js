@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 
 import { nameReducer, roomsReducer, authReducer } from 'userReducers';
 import { chatroomsReducer } from 'chatroomsReducers';
-import { isMobileReducer } from 'reducers';
+import { isMobileReducer } from 'uiReducers';
 
 export const configure = (initialState = {}) => {
   const reducer = combineReducers({

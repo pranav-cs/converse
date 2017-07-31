@@ -1,6 +1,6 @@
 export const nameReducer = (state = '', action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case 'LOGIN' || 'SIGNUP':
       return action.name;
     case 'LOGOUT':
       return '';
@@ -11,7 +11,7 @@ export const nameReducer = (state = '', action) => {
 
 export const roomsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case 'LOGIN' || 'SIGNUP':
       return action.room;
     case 'LOGOUT':
       return [];
@@ -22,7 +22,7 @@ export const roomsReducer = (state = [], action) => {
 
 export const authReducer = (state = false, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case 'LOGIN' || 'SIGNUP':
       return true;
     case 'LOGOUT':
       return false;

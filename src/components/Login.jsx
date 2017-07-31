@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import io from 'socket.io-client';
 
-import { startEnterHome, startLeaveHome } from 'actions';
+import { startSignup, startLogin, startLogout } from 'authActions';
 
 export const socket = io();
 
@@ -18,7 +18,7 @@ export class Login extends React.Component {
     });
 
     socket.on('disconnect', () => {
-      dispatch(startLeaveHome());
+      dispatch(startLogout());
       console.log('Disconnected from server');
     });
   }
@@ -27,32 +27,20 @@ export class Login extends React.Component {
     e.preventDefault();
     const { dispatch } = this.props;
 
-    const data = {
-      name: this.refs.name.value,
-      password: this.refs.password.value
-    };
+    const name = this.refs.name.value;
+    const password = this.refs.password.value;
 
-    socket.emit('login', data, (result) => {
-      if (result) {
-        dispatch(startEnterHome(data.name));
-      }
-    });
+    dispatch(startLogin(name, password));
   }
 
   onSignup(e) {
     e.preventDefault();
     const { dispatch } = this.props;
 
-    const data = {
-      name: this.refs.name.value,
-      password: this.refs.password.value
-    };
+    const name = this.refs.name.value;
+    const password = this.refs.password.value;
 
-    socket.emit('signup', data, (result) => {
-      if (result) {
-        dispatch(startEnterHome(data.name));
-      }
-    });
+    dispatch(startSignup(name, password));
   }
 
   render() {

@@ -1,15 +1,6 @@
-export const nameReducer = (state = '', action) => {
-  switch (action.type) {
-    case 'ENTER_HOME':
-      return action.name;
-    case 'LEAVE_HOME':
-      return '';
-    default:
-      return state;
-  }
-};
 
-export const roomReducer = (state = '', action) => {
+
+export const chatroomsReducer = (state = '', action) => {
   switch (action.type) {
     case 'ENTER_ROOM':
       return action.room;

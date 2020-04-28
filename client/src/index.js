@@ -1,13 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Router } from "react-router-dom"
+import { createBrowserHistory } from 'history';
+import '../node_modules/bulma/css/bulma.css'
+import './styles/style.scss'
+import * as serviceWorker from './serviceWorker'
+
+import App from './components/App/App'
+
+const history = createBrowserHistory()
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router history={history}>
     <App />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById('root')
 );
 

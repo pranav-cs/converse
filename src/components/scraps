@@ -1,7 +1,0 @@
-<p id='logo'><i className="fa fa-bars" aria-hidden="true" onClick={this.onShowMenu.bind(this)} />&nbsp;&nbsp;Pangolin</p>
-
-<Topbar />
-<List />
-<Textbar />
-
-<button onClick={this.onSend.bind(this)}><i className="fa fa-chevron-right" aria-hidden="true"></i></button>

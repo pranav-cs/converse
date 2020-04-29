@@ -4,8 +4,8 @@ import { Redirect, withRouter } from "react-router-dom"
 class Login extends Component {
   constructor(props) {
     super(props)
-    this.username_ref = createRef();
-    this.state = { login_success: false }
+    this.username_ref = createRef()
+    this.state = { login_success: true }
   }
 
   go() {
@@ -26,7 +26,7 @@ class Login extends Component {
 
           <div id='title'>
             <span id='logo' className="fas fa-paw"></span>
-            <h1 className="is-size-1">Pangolin</h1>
+            <h1 className="is-size-1">{process.env.REACT_APP_NAME}</h1>
           </div>
 
           <div className="field has-addons">

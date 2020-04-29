@@ -1,0 +1,23 @@
+#Sidebar {
+    height: 90%;
+    padding: 3em 2em 1em;
+
+    overflow-y: auto;
+
+    p {
+        color: $color-1;
+    }
+
+    li a {
+        color: whitesmoke;
+
+        &:hover {
+            color: $color-1;
+            background-color: inherit;
+        }
+
+        &.is-active {
+            background-color: $color-3;
+        }
+    }
+}

@@ -13,10 +13,10 @@ class App extends Component {
       <div id="App">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Login />
           </Route>
           <Route path="/home">
-            <Login />
+            <Home />
           </Route>
         </Switch>
       </div>

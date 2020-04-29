@@ -1,12 +1,24 @@
 .card {
-    background-color: inherit;
-    box-shadow: none;
+  background-color: inherit;
+  box-shadow: none;
 
-    p {
-        color: whitesmoke;
-    }
+  img {
+    border-radius: 50%;
+  }
 
-    img {
-  border-radius: 50%;
-}
+  p {
+    color: whitesmoke;
+  }
+
+  #name {
+    font-size: 1em;
+    font-weight: bold;
+    font-family: $family-secondary;
+    color: #f7b668;
+  }
+
+  #message {
+    font-size: 1.1em;
+    font-family: $family-secondary;
+  }
 }

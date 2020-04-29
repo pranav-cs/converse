@@ -1,6 +1,6 @@
 #MessageInput {
     position: absolute;
-    bottom: 2em;
+    bottom: 0;
 
     .field {
         width: 70%;
@@ -10,6 +10,7 @@
             width: 90% !important;
 
             input {
+                font-family: $family-secondary;
                 color: black;
             }
         }

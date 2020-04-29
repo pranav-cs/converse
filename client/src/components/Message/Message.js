@@ -15,8 +15,8 @@ class Message extends Component {
             </div>
 
             <div className="media-content">
-              <p className="title is-6">{name}</p>
-              <p className="subtitle is-6">{message}</p>
+              <p id='name'>{name}</p>
+              <p id='message'>{message}</p>
             </div>
           </div>
         </div>

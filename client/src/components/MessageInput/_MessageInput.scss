@@ -1,0 +1,21 @@
+#MessageInput {
+    position: absolute;
+    bottom: 2em;
+
+    .field {
+        width: 70%;
+        margin: 0 auto;
+
+        #input-control {
+            width: 90% !important;
+
+            input {
+                color: black;
+            }
+        }
+
+        #button-control {
+            width: 10% !important;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MessageList from '../MessageList/MessageList'
+import MessageInput from '../MessageInput/MessageInput'
 
 class MessageBox extends Component {
   render() {
@@ -17,6 +18,7 @@ class MessageBox extends Component {
     return (
       <div id='MessageBox'>
         <MessageList data={data} />
+        <MessageInput />
       </div>
     )
   }

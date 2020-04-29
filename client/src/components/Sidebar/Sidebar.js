@@ -12,7 +12,7 @@ class Sidebar extends Component {
             <li><a>Sports</a></li>
           </ul>
         </aside>
-      </div>
+      </div >
     )
   }
 }

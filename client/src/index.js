@@ -4,16 +4,20 @@ import { Router } from "react-router-dom"
 import { createBrowserHistory } from 'history';
 import '../node_modules/bulma/css/bulma.css'
 import './styles/style.scss'
+import { StoreProvider } from 'easy-peasy'
 import * as serviceWorker from './serviceWorker'
 
 import App from './components/App/App'
+import { store } from './store/store'
 
 const history = createBrowserHistory()
 
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <StoreProvider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </StoreProvider>,
   document.getElementById('root')
 );
 

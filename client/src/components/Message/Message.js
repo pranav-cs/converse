@@ -5,22 +5,19 @@ class Message extends Component {
     const { name, message } = this.props
 
     return (
-      <div className="card">
-        <div className="card-content">
-          <div className="media">
-            <div className="media-left">
-              <figure className="image is-48x48">
-                <img src="https://picsum.photos/100" alt='' />
-              </figure>
-            </div>
-
-            <div className="media-content">
-              <p id='name'>{name}</p>
-              <p id='message'>{message}</p>
-            </div>
+      <article id='Message' className="media">
+        <figure className="media-left">
+          <p className="image is-48x48">
+            <img className='is-rounded' src="https://picsum.photos/48" alt='' />
+          </p>
+        </figure>
+        <div className="media-content">
+          <div className="content">
+            <p id='name'>{name}</p>
+            <p id='message'>{message}</p>
           </div>
         </div>
-      </div>
+      </article>
     )
   }
 }

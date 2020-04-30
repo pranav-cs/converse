@@ -1,10 +1,7 @@
-.card {
+#Message {
   background-color: inherit;
   box-shadow: none;
-
-  img {
-    border-radius: 50%;
-  }
+  border: none !important;
 
   p {
     color: whitesmoke;
@@ -15,6 +12,7 @@
     font-weight: bold;
     font-family: $family-secondary;
     color: #f7b668;
+    margin: 0;
   }
 
   #message {

@@ -1,16 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Redirect, withRouter } from "react-router-dom"
+import { useStoreState } from 'easy-peasy'
+
 import Topbar from '../Topbar/Topbar'
 import Main from '../Main/Main'
 
-class Home extends Component {
-  render() {
-    return (
-      <div id='Home' className="container is-fluid">
-        <Topbar />
-        <Main />
-      </div>
-    )
+function Home() {
+  const is_logged_in = useStoreState(state => state.profile.is_logged_in)
+
+  if (!is_logged_in) {
+    return <Redirect to='/' />
   }
+
+  return (
+    <div id='Home' className="container is-fluid">
+      <Topbar />
+      <Main />
+    </div>
+  )
 }
 
-export default Home
+export default withRouter(Home)

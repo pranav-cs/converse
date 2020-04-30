@@ -33,7 +33,14 @@ function Login() {
           <div className="control">
             <button
               className="button is-info is-rounded is-large"
-              onClick={() => login()}>Go</button>
+              onClick={() => {
+                const name = username_ref.current.value
+
+                if (name != '') {
+                  login(name)
+                  username_ref.current.value = ''
+                }
+              }}>Go</button>
           </div>
         </div>
 

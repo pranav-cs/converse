@@ -18,13 +18,27 @@ const messages_model = {
         }
     ],
     'News': [],
-    'Sports': []
+    'Sports': [],
+
+    push_message: action((state, { room, message, name }) => {
+        state[room].push({ name, message })
+    })
 }
 
 const profile_model = {
     name: '',
-    set_name: action((state, payload) => {
-        state.name = payload.name
+    set_name: action((state, name) => {
+        state.name = name
+    }),
+
+    color: '',
+    set_color: action((state, color) => {
+        state.color = color
+    }),
+
+    photo: '',
+    set_photo: action((state, photo) => {
+        state.photo = photo
     }),
 
     current_room: 'General',
@@ -33,10 +47,12 @@ const profile_model = {
     }),
 
     is_logged_in: false,
-    login: action((state) => {
+    login: action((state, name) => {
+        state.name = name
         state.is_logged_in = true
     }),
     logout: action((state) => {
+        state.name = ''
         state.is_logged_in = false
     })
 }
@@ -48,4 +64,3 @@ const store_model = {
 }
 
 export const store = createStore(store_model)
-

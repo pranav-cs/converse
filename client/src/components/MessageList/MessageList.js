@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useStoreState } from 'easy-peasy'
+
 import Message from '../Message/Message'
 
-class MessageList extends Component {
-  render() {
-    return (
-      <div id='MessageList'>
-        {this.props.messages.map((data, index) => <Message key={index} name={data.name} message={data.message} />)}
-      </div>
-    )
-  }
+function MessageList({ room }) {
+  const messages = useStoreState(state => state.messages[room]) || []
+
+  return (
+    <div id='MessageList'>
+      {messages.map(({ name, message }, index) => <Message key={index} name={name} message={message} />)}
+    </div>
+  )
 }
 
 export default MessageList

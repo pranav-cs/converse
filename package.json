@@ -7,8 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "bad-words": "^3.0.3",
     "express": "^4.17.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0"
   },
   "scripts": {
     "start": "node server.js",

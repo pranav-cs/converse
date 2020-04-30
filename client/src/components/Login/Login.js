@@ -27,13 +27,17 @@ function Login() {
               className="input is-rounded is-large"
               type="text"
               placeholder="Enter a nickname"
-              ref={username_ref} />
+              ref={username_ref} autoFocus />
           </div>
 
           <div className="control">
             <button
               className="button is-info is-rounded is-large"
               onClick={async () => {
+                if (!username_ref || !username_ref.current) {
+                  return
+                }
+
                 const name = username_ref.current.value
 
                 if (name) {
@@ -42,7 +46,10 @@ function Login() {
 
                   let photo = await fetch('https://picsum.photos/48')
                   let photoURL = photo.url
-                  username_ref.current.value = ''
+
+                  if (username_ref.current) {
+                    username_ref.current.value = ''
+                  }
 
                   login({ name, color, photoURL })
                 }

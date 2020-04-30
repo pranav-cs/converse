@@ -8,15 +8,15 @@
   }
 
   #name {
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: bold;
     font-family: $family-secondary;
-    color: #f7b668;
     margin: 0;
+    text-transform: capitalize;
   }
 
   #message {
-    font-size: 1.1em;
+    font-size: 1.3em;
     font-family: $family-secondary;
   }
 }

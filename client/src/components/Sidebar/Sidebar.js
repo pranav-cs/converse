@@ -9,7 +9,7 @@ function Sidebar() {
   return (
     <div id='Sidebar'>
       <aside className="menu">
-        <p className="menu-label has-text-weight-semibold">Rooms</p>
+        <p className="menu-label is-size-4 has-text-weight-semibold">Groups</p>
         <ul className="menu-list">
           {
             rooms.map((room, index) => {

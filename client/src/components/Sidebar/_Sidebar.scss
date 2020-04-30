@@ -10,6 +10,8 @@
 
     li a {
         color: whitesmoke;
+        font-size: 1.4em;
+        text-transform: capitalize;
 
         &:hover {
             color: $color-1;

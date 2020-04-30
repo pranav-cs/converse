@@ -16,7 +16,7 @@ function MessageInput({ room }) {
             className='input is-medium'
             type='text'
             placeholder='Type Away!'
-            ref={message_ref} />
+            ref={message_ref} autoFocus />
 
           <span className='icon is-small is-left'>
             <i className='fas fa-pencil-alt'></i>

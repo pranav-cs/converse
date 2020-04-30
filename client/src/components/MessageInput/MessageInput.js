@@ -4,7 +4,7 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 function MessageInput({ room }) {
   let message_ref = createRef()
 
-  const name = useStoreState(state => state.profile.name)
+  const name = useStoreState(state => state.people.me.name)
   const push_message = useStoreActions(actions => actions.messages.push_message)
 
   return (
@@ -24,16 +24,16 @@ function MessageInput({ room }) {
         </div>
 
         <div id='button-control' className='control is-large'>
+          { /* eslint-disable-next-line */}
           <a
             className='button is-medium is-info'
             onClick={() => {
               const message = message_ref.current.value
 
-              if (message != '') {
+              if (message) {
                 push_message({ name, room, message })
                 message_ref.current.value = ''
               }
-
             }}><i className='fas fa-paper-plane'></i></a>
         </div>
 

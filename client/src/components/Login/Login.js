@@ -5,8 +5,8 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 function Login() {
   let username_ref = createRef()
 
-  const is_logged_in = useStoreState(state => state.profile.is_logged_in)
-  const login = useStoreActions(actions => actions.profile.login)
+  const is_logged_in = useStoreState(state => state.people.me.is_logged_in)
+  const login = useStoreActions(actions => actions.people.login)
 
   if (is_logged_in) {
     return <Redirect to='/home' />
@@ -33,12 +33,18 @@ function Login() {
           <div className="control">
             <button
               className="button is-info is-rounded is-large"
-              onClick={() => {
+              onClick={async () => {
                 const name = username_ref.current.value
 
-                if (name != '') {
-                  login(name)
+                if (name) {
+                  let colors = ['#f7b668', '#36a9a6', '#cdff75', '#ff96f0']
+                  let color = colors[Math.floor(Math.random() * colors.length)]
+
+                  let photo = await fetch('https://picsum.photos/48')
+                  let photoURL = photo.url
                   username_ref.current.value = ''
+
+                  login({ name, color, photoURL })
                 }
               }}>Go</button>
           </div>

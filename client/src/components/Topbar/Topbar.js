@@ -6,7 +6,7 @@ function Topbar() {
   let burger = createRef()
   let burger_menu = createRef()
 
-  const logout = useStoreActions(actions => actions.profile.logout)
+  const logout = useStoreActions(actions => actions.people.logout)
 
   return (
     <nav id='topbar' className='navbar' role='navigation'>

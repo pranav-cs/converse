@@ -6,7 +6,7 @@ import Topbar from '../Topbar/Topbar'
 import Main from '../Main/Main'
 
 function Home() {
-  const is_logged_in = useStoreState(state => state.profile.is_logged_in)
+  const is_logged_in = useStoreState(state => state.people.me.is_logged_in)
 
   if (!is_logged_in) {
     return <Redirect to='/' />

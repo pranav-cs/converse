@@ -4,7 +4,7 @@ import MessageList from '../MessageList/MessageList'
 import MessageInput from '../MessageInput/MessageInput'
 
 function MessageBox() {
-  const current_room = useStoreState(state => state.profile.current_room)
+  const current_room = useStoreState(state => state.people.me.current_room)
 
   return (
     <div id='MessageBox'>

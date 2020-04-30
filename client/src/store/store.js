@@ -1,65 +1,73 @@
 import { createStore, action } from 'easy-peasy'
 
-const rooms_model = [
-    'General',
-    'News',
-    'Sports'
-]
+const rooms_model = {
+    list: ['General', 'News', 'Sports'],
+    add: action((state, room) => state.list.push(room))
+}
 
 const messages_model = {
-    'General': [
-        {
-            name: "John Smith",
-            message: "Hello"
-        },
-        {
-            name: "Trent",
-            message: "Hi"
-        }
-    ],
-    'News': [],
-    'Sports': [],
+    messages: {
+        'General': [],
+        'News': [],
+        'Sports': []
+    },
 
     push_message: action((state, { room, message, name }) => {
-        state[room].push({ name, message })
+        state.messages[room].push({ name, message })
     })
 }
 
-const profile_model = {
-    name: '',
-    set_name: action((state, name) => {
-        state.name = name
+const profiles_model = {
+    me: {
+        name: '',
+        color: '',
+        photoURL: '',
+        current_room: 'General',
+        is_logged_in: false
+    },
+
+    profiles: {},
+
+    add: action((state, { name, color, photoURL }) => {
+        if (state.profiles[name]) {
+            state.profiles[name] = { color, photoURL }
+        }
     }),
 
-    color: '',
-    set_color: action((state, color) => {
-        state.color = color
+    remove: action((state, name) => {
+        if (state.profiles[name]) {
+            delete state.profiles[name]
+        }
     }),
 
-    photo: '',
-    set_photo: action((state, photo) => {
-        state.photo = photo
-    }),
-
-    current_room: 'General',
     go_to: action((state, destination) => {
-        state.current_room = destination
+        state.me.current_room = destination
     }),
 
-    is_logged_in: false,
-    login: action((state, name) => {
-        state.name = name
-        state.is_logged_in = true
+    login: action((state, { name, color, photoURL }) => {
+        state.me.name = name
+        state.me.color = color
+        state.me.photoURL = photoURL
+        state.me.is_logged_in = true
+
+        state.profiles[name] = { color, photoURL }
     }),
+
     logout: action((state) => {
-        state.name = ''
-        state.is_logged_in = false
+        if (state.profiles[state.me.name]) {
+            delete state.profiles[state.me.name]
+        }
+
+        state.me.name = ''
+        state.me.color = ''
+        state.me.photoURL = ''
+        state.me.is_logged_in = false
     })
 }
 
 const store_model = {
     rooms: rooms_model,
-    profile: profile_model,
+    people: profiles_model,
     messages: messages_model
 }
 

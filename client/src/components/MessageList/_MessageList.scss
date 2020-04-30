@@ -1,3 +1,12 @@
 #MessageList {
     height: 90%;
 }
+
+#no-messages {
+    height: 90%;
+    font-family: $family-secondary;
+
+    h1 {
+        padding-top: 2em;
+    }
+}

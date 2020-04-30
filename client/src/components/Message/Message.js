@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useStoreState } from 'easy-peasy'
 
-class Message extends Component {
-  render() {
-    const { name, message } = this.props
+function Message({ name, message }) {
+  const profile = useStoreState(state => state.people.profiles[name])
+  const { color, photoURL } = profile
 
-    return (
-      <article id='Message' className="media">
-        <figure className="media-left">
-          <p className="image is-48x48">
-            <img className='is-rounded' src="https://picsum.photos/48" alt='' />
-          </p>
-        </figure>
-        <div className="media-content">
-          <div className="content">
-            <p id='name'>{name}</p>
-            <p id='message'>{message}</p>
-          </div>
+  return (
+    <article id='Message' className="media">
+      <figure className="media-left">
+        <p className="image is-48x48">
+          <img className='is-rounded' src={photoURL} alt='' />
+        </p>
+      </figure>
+      <div className="media-content">
+        <div className="content">
+          <p id='name' style={{ color: `${color}` }}>{name}</p>
+          <p id='message'>{message}</p>
         </div>
-      </article>
-    )
-  }
+      </div>
+    </article>
+  )
 }
 
 export default Message

@@ -1,5 +1,12 @@
 import action_type from '../action_type'
 
+export const init_socket = socket => {
+    return {
+        type: action_type.INIT_SOCKET,
+        socket
+    }
+}
+
 export const login = (name, color, photoURL) => {
     return {
         type: action_type.LOGIN,

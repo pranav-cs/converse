@@ -2,37 +2,22 @@ import React, { Component, createRef } from 'react'
 import { Redirect, withRouter } from "react-router-dom"
 import { connect } from 'react-redux'
 
-import { login } from '../../store/action_creators/action_creators'
-
 class Login extends Component {
   constructor(props) {
     super(props)
     this.username_ref = createRef()
   }
 
-  async handle_login() {
-    if (!this.username_ref || !this.username_ref.current) {
-      return
-    }
-
+  handle_login() {
     const name = this.username_ref.current.value
 
-    if (name) {
-      let colors = ['#f7b668', '#36a9a6', '#cdff75', '#ff96f0']
-      let color = colors[Math.floor(Math.random() * colors.length)]
-
-      let photo = await fetch('https://picsum.photos/48')
-      let photoURL = photo.url
-
-      if (!this.username_ref && this.username_ref.current) {
-        this.username_ref.current.value = ''
-      }
-
-      this.props.login(name, color, photoURL)
-    }
+    this.props.socket.emit('join', { name })
+    this.username_ref.current.value = ''
   }
 
   render() {
+    console.log(this.props.socket);
+
     if (this.props.is_logged_in) {
       return <Redirect to='/home' />
     }
@@ -58,7 +43,7 @@ class Login extends Component {
             <div className="control">
               <button
                 className="button is-info is-rounded is-large"
-                onClick={async () => await this.handle_login()}>Go</button>
+                onClick={() => this.handle_login()}>Go</button>
             </div>
           </div>
 
@@ -70,10 +55,9 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
+    socket: state.socket,
     is_logged_in: state.auth.is_logged_in
   }
 }
 
-const mapDispatchToProps = { login }
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login))
+export default connect(mapStateToProps, null)(withRouter(Login))

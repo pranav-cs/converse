@@ -20,7 +20,9 @@ app.use((err, req, res, next) => {
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.js'));
 })
-
+//let photo = await fetch('https://picsum.photos/48')
+// let colors = ['#f7b668', '#36a9a6', '#cdff75', '#ff96f0']
+// let color = colors[Math.floor(Math.random() * colors.length)]
 io.on('connection', socket => {
     socket.on('join', data => {
         console.log('join : ', data)

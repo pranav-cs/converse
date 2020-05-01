@@ -2,13 +2,15 @@ import React, { Component, createRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { logout } from '../../store/action_creators/action_creators'
-
 class Topbar extends Component {
   constructor(props) {
     super(props)
     this.burger = createRef()
     this.burger_menu = createRef()
+  }
+
+  handle_logout() {
+    this.props.socket.emit('disconnect')
   }
 
   render() {
@@ -38,7 +40,7 @@ class Topbar extends Component {
                 <button
                   id='logout-btn'
                   className='button is-primary'
-                  onClick={() => this.props.logout()}><i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</button>
+                  onClick={() => this.handle_logout()}><i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</button>
               </div>
             </div>
           </div>
@@ -48,6 +50,10 @@ class Topbar extends Component {
   }
 }
 
-const mapDispatchToProps = { logout }
+const mapStateToProps = state => {
+  return {
+    socket: state.socket
+  }
+}
 
-export default connect(null, mapDispatchToProps)(withRouter(Topbar))
+export default connect(mapStateToProps, null)(withRouter(Topbar))

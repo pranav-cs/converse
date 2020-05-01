@@ -11,16 +11,13 @@ class MessageInput extends Component {
   }
 
   handle_send() {
-    if (!this.message_ref || !this.message_ref.current) {
-      return
-    }
-
     const message = this.message_ref.current.value
+    const { name, current_room: room } = this.props
 
-    if (message) {
-      this.props.add_message(this.props.current_room, this.props.name, message)
-      this.message_ref.current.value = ''
-    }
+    this.message_ref.current.value = ''
+    this.message_ref.current.focus()
+
+    this.props.socket.emit('message', { room, name, message })
   }
 
   render() {

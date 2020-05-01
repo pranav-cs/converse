@@ -1,4 +1,6 @@
 const action_type = {
+    INIT_SOCKET: 'INIT_SOCKET',
+
     LOGIN: 'LOGIN',
     LOGOUT: 'LOGOUT',
 

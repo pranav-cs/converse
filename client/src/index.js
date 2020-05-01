@@ -10,6 +10,9 @@ import './styles/style.scss'
 
 import App from './components/App/App'
 import store from './store/store'
+import setup_socket_event_handlers from './event_handlers'
+
+setup_socket_event_handlers(store)
 
 const history = createBrowserHistory()
 

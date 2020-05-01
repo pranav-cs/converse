@@ -13,32 +13,32 @@ const setup_socket_event_handlers = (store) => {
 
     store.dispatch(init_socket(socket))
 
-    socket.once('login_success', ({ name, color, photoURL }) => {
-        login(name, color, photoURL)
+    socket.once('join_success', ({ name, color, photoURL, rooms, current_room, people }) => {
+        store.dispatch(login(name, color, photoURL, rooms, current_room, people))
     })
 
     socket.once('logout_success', () => {
-        logout()
+        store.dispatch(logout())
     })
 
     socket.on('add_message', ({ room, name, text }) => {
-        add_message(room, name, text)
+        store.dispatch(add_message(room, name, text))
     })
 
     socket.on('add_person', ({ name, color, photoURL }) => {
-        add_person(name, color, photoURL)
+        store.dispatch(add_person(name, color, photoURL))
     })
 
     socket.on('remove_person', ({ name }) => {
-        remove_person(name)
+        store.dispatch(remove_person(name))
     })
 
     socket.on('add_room', ({ room }) => {
-        add_room(room)
+        store.dispatch(add_room(room))
     })
 
     socket.on('remove_room', ({ room }) => {
-        remove_room(room)
+        store.dispatch(remove_room(room))
     })
 }
 

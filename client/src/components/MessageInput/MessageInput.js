@@ -7,17 +7,17 @@ import { add_message } from '../../store/action_creators/action_creators'
 class MessageInput extends Component {
   constructor(props) {
     super(props)
-    this.message_ref = createRef()
+    this.text_ref = createRef()
   }
 
   handle_send() {
-    const message = this.message_ref.current.value
+    const text = this.text_ref.current.value
     const { name, current_room: room } = this.props
 
-    this.message_ref.current.value = ''
-    this.message_ref.current.focus()
+    this.text_ref.current.value = ''
+    this.text_ref.current.focus()
 
-    this.props.socket.emit('message', { room, name, message })
+    this.props.socket.emit('add_message', { room, name, text })
   }
 
   render() {
@@ -30,7 +30,7 @@ class MessageInput extends Component {
               className='input is-medium'
               type='text'
               placeholder='Type Away!'
-              ref={this.message_ref} autoFocus />
+              ref={this.text_ref} autoFocus />
 
             <span className='icon is-small is-left'>
               <i className='fas fa-pencil-alt'></i>
@@ -52,6 +52,7 @@ class MessageInput extends Component {
 
 const mapStateToProps = state => {
   return {
+    socket: state.socket,
     name: state.me.name,
     current_room: state.me.current_room
   }

@@ -7,12 +7,15 @@ export const init_socket = socket => {
     }
 }
 
-export const login = (name, color, photoURL) => {
+export const login = (name, color, photoURL, rooms, current_room, people) => {
     return {
         type: action_type.LOGIN,
         name,
         color,
-        photoURL
+        photoURL,
+        rooms,
+        current_room,
+        people
     }
 }
 

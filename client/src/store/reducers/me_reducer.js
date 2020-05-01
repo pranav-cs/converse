@@ -14,7 +14,7 @@ export default function me_reducer(state = me_default, action) {
                 name: action.name,
                 color: action.color,
                 photoURL: action.photoURL,
-                current_room: 'General'
+                current_room: action.current_room
             }
 
         case action_type.LOGOUT:

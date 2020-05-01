@@ -1,9 +1,12 @@
 import action_type from '../action_type'
 
-let rooms_default = ['General', 'News', 'Sports']
+let rooms_default = []
 
 export default function rooms_reducer(state = rooms_default, action) {
     switch (action.type) {
+        case action_type.LOGIN:
+            return action.rooms
+
         case action_type.ADD_ROOM:
             return [
                 ...state,

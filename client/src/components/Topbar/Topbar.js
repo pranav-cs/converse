@@ -10,7 +10,7 @@ class Topbar extends Component {
   }
 
   handle_logout() {
-    this.props.socket.emit('disconnect')
+    this.props.socket.emit('disconnect', { name: this.props.name })
   }
 
   render() {
@@ -52,7 +52,8 @@ class Topbar extends Component {
 
 const mapStateToProps = state => {
   return {
-    socket: state.socket
+    socket: state.socket,
+    name: state.me.name
   }
 }
 

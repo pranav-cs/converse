@@ -10,7 +10,7 @@ import './styles/style.scss'
 
 import App from './components/App/App'
 import store from './store/store'
-import setup_socket_event_handlers from './event_handlers'
+import setup_socket_event_handlers from './socket_event_handlers'
 
 setup_socket_event_handlers(store)
 
@@ -28,4 +28,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()

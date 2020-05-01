@@ -4,8 +4,10 @@ const people_default = {}
 
 export default function people_reducer(state = people_default, action) {
     switch (action.type) {
-        case action_type.ADD_PERSON:
         case action_type.LOGIN:
+            return action.people
+
+        case action_type.ADD_PERSON:
             return {
                 ...state,
                 [action.name]: {

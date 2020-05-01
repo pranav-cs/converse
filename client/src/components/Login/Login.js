@@ -16,8 +16,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.socket);
-
     if (this.props.is_logged_in) {
       return <Redirect to='/home' />
     }

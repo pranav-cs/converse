@@ -1,23 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router } from "react-router-dom"
-import { createBrowserHistory } from 'history';
-import '../node_modules/bulma/css/bulma.css'
-import './styles/style.scss'
-import { StoreProvider } from 'easy-peasy'
+import { createBrowserHistory } from 'history'
+import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 
+import '../node_modules/bulma/css/bulma.css'
+import './styles/style.scss'
+
 import App from './components/App/App'
-import { store } from './store/store'
+import store from './store/store'
 
 const history = createBrowserHistory()
 
 ReactDOM.render(
-  <StoreProvider store={store}>
+  <Provider store={store}>
     <Router history={history}>
       <App />
     </Router>
-  </StoreProvider>,
+  </Provider>,
   document.getElementById('root')
 );
 

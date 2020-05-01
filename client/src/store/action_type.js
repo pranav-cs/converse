@@ -1,0 +1,16 @@
+const action_type = {
+    LOGIN: 'LOGIN',
+    LOGOUT: 'LOGOUT',
+
+    ADD_MESSAGE: 'ADD_MESSAGE',
+    REMOVE_MESSAGE: 'REMOVE_MESSAGE',
+
+    ADD_ROOM: 'ADD_ROOM',
+    REMOVE_ROOM: 'REMOVE_ROOM',
+    CHANGE_ROOM: 'CHANGE_ROOM',
+
+    ADD_PERSON: 'ADD_PERSON',
+    REMOVE_PERSON: 'REMOVE_PERSON'
+}
+
+export default action_type

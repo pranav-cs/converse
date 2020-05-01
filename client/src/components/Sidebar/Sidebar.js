@@ -1,31 +1,41 @@
-import React from 'react'
-import { useStoreState, useStoreActions } from 'easy-peasy'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-function Sidebar() {
-  const rooms = useStoreState(state => state.rooms.list)
-  const current_room = useStoreState(state => state.people.me.current_room)
-  const go_to = useStoreActions(actions => actions.people.go_to)
+import { change_room } from '../../store/action_creators/action_creators'
 
-  return (
-    <div id='Sidebar'>
-      <aside className="menu">
-        <p className="menu-label is-size-4 has-text-weight-semibold">Groups</p>
-        <ul className="menu-list">
-          {
-            rooms.map((room, index) => {
-              if (current_room === room) {
-                // eslint-disable-next-line
-                return <li key={index} onClick={() => go_to(room)}><a className='is-active'>{room}</a></li>
-              }
+class Sidebar extends Component {
+  render() {
+    return (
+      <div id='Sidebar'>
+        <aside className="menu">
+          <p className="menu-label is-size-4-widescreen is-size-3-fullhd has-text-weight-semibold">Groups</p>
+          <ul className="menu-list">
+            {
+              this.props.rooms.map((room, index) => {
+                let class_list = 'is-size-5-widescreen is-size-4-fullhd'
+                class_list += this.props.current_room === room ? ' is-active' : ''
 
-              // eslint-disable-next-line
-              return <li key={index} onClick={() => go_to(room)}><a>{room}</a></li>
-            })
-          }
-        </ul>
-      </aside>
-    </div>
-  )
+                return (
+                  // eslint-disable-next-line
+                  <li key={index} onClick={() => this.props.change_room(room)}><a className={class_list}>{room}</a></li>
+                )
+              })
+            }
+          </ul>
+        </aside>
+      </div>
+    )
+  }
 }
 
-export default Sidebar
+const mapStateToProps = state => {
+  return {
+    current_room: state.me.current_room,
+    rooms: state.rooms
+  }
+}
+
+const mapDispatchToProps = { change_room }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Sidebar))

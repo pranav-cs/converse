@@ -21,9 +21,14 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.js'));
 })
 
-io.on('connection', client => {
-    client.on('event', data => { /* … */ });
-    client.on('disconnect', () => { /* … */ });
+io.on('connection', socket => {
+    socket.on('join', data => {
+        console.log('join : ', data)
+    })
+
+    socket.on('disconnect', () => {
+        console.log('disconnect')
+    })
 })
 
 server.listen(port, () => {
@@ -31,5 +36,5 @@ server.listen(port, () => {
 })
 
 module.exports = {
-    app
+    app, io
 }

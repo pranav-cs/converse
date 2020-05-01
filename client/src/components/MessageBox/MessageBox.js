@@ -1,17 +1,16 @@
 import React from 'react'
-import { useStoreState } from 'easy-peasy'
+import { withRouter } from 'react-router-dom'
+
 import MessageList from '../MessageList/MessageList'
 import MessageInput from '../MessageInput/MessageInput'
 
 function MessageBox() {
-  const current_room = useStoreState(state => state.people.me.current_room)
-
   return (
     <div id='MessageBox'>
-      <MessageList room={current_room} />
-      <MessageInput room={current_room} />
+      <MessageList />
+      <MessageInput />
     </div>
   )
 }
 
-export default MessageBox
+export default withRouter(MessageBox)

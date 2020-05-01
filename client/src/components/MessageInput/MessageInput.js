@@ -1,45 +1,65 @@
-import React, { createRef } from 'react'
-import { useStoreState, useStoreActions } from 'easy-peasy'
+import React, { Component, createRef } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-function MessageInput({ room }) {
-  let message_ref = createRef()
+import { add_message } from '../../store/action_creators/action_creators'
 
-  const name = useStoreState(state => state.people.me.name)
-  const push_message = useStoreActions(actions => actions.messages.push_message)
+class MessageInput extends Component {
+  constructor(props) {
+    super(props)
+    this.message_ref = createRef()
+  }
 
-  return (
-    <div id='MessageInput' className='container is-fluid'>
-      <div className='field has-addons'>
+  handle_send() {
+    if (!this.message_ref || !this.message_ref.current) {
+      return
+    }
 
-        <div id='input-control' className='control is-large has-icons-left'>
-          <input
-            className='input is-medium'
-            type='text'
-            placeholder='Type Away!'
-            ref={message_ref} autoFocus />
+    const message = this.message_ref.current.value
 
-          <span className='icon is-small is-left'>
-            <i className='fas fa-pencil-alt'></i>
-          </span>
+    if (message) {
+      this.props.add_message(this.props.current_room, this.props.name, message)
+      this.message_ref.current.value = ''
+    }
+  }
+
+  render() {
+    return (
+      <div id='MessageInput' className='container is-fluid' >
+        <div className='field has-addons'>
+
+          <div id='input-control' className='control is-large has-icons-left'>
+            <input
+              className='input is-medium'
+              type='text'
+              placeholder='Type Away!'
+              ref={this.message_ref} autoFocus />
+
+            <span className='icon is-small is-left'>
+              <i className='fas fa-pencil-alt'></i>
+            </span>
+          </div>
+
+          <div id='button-control' className='control is-large'>
+            { /* eslint-disable-next-line */}
+            <a
+              className='button is-medium is-info'
+              onClick={() => this.handle_send()}><i className='fas fa-paper-plane'></i></a>
+          </div>
+
         </div>
-
-        <div id='button-control' className='control is-large'>
-          { /* eslint-disable-next-line */}
-          <a
-            className='button is-medium is-info'
-            onClick={() => {
-              const message = message_ref.current.value
-
-              if (message) {
-                push_message({ name, room, message })
-                message_ref.current.value = ''
-              }
-            }}><i className='fas fa-paper-plane'></i></a>
-        </div>
-
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default MessageInput
+const mapStateToProps = state => {
+  return {
+    name: state.me.name,
+    current_room: state.me.current_room
+  }
+}
+
+const mapDispatchToProps = { add_message }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MessageInput))

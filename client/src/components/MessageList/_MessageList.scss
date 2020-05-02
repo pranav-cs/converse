@@ -1,5 +1,8 @@
 #MessageList {
     height: 90%;
+
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 #no-messages {

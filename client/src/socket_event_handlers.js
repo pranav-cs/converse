@@ -2,7 +2,7 @@ import io from 'socket.io-client'
 
 import {
     init_socket,
-    login, logout,
+    login,
     add_message,
     add_person, remove_person,
     add_room, remove_room
@@ -15,10 +15,6 @@ const setup_socket_event_handlers = (store) => {
 
     socket.once('join_success', ({ name, color, photoURL, rooms, current_room, people }) => {
         store.dispatch(login(name, color, photoURL, rooms, current_room, people))
-    })
-
-    socket.once('logout_success', () => {
-        store.dispatch(logout())
     })
 
     socket.on('add_message', ({ room, name, text }) => {

@@ -2,6 +2,8 @@ import React, { Component, createRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import { logout } from '../../store/action_creators/action_creators'
+
 class Topbar extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +12,10 @@ class Topbar extends Component {
   }
 
   handle_logout() {
-    this.props.socket.emit('disconnect', { name: this.props.name })
+    let { socket, logout } = this.props
+
+    socket.disconnect()
+    logout()
   }
 
   render() {
@@ -52,9 +57,8 @@ class Topbar extends Component {
 
 const mapStateToProps = state => {
   return {
-    socket: state.socket,
-    name: state.me.name
+    socket: state.socket
   }
 }
 
-export default connect(mapStateToProps, null)(withRouter(Topbar))
+export default connect(mapStateToProps, { logout })(withRouter(Topbar))

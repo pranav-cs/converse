@@ -11,6 +11,10 @@ class Login extends Component {
   handle_login() {
     const name = this.username_ref.current.value
 
+    if (this.props.socket.disconnected) {
+      console.log('refresh page to reconnect to server')
+    }
+
     this.props.socket.emit('join', { name })
     this.username_ref.current.value = ''
   }

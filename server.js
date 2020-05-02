@@ -24,6 +24,7 @@ app.get('*', (req, res) => {
 
 let people = {}
 let rooms = ['General', 'Sports', 'News']
+let socket_id_to_name = {}
 
 io.on('connection', socket => {
     socket.on('join', ({ name }) => {
@@ -38,6 +39,7 @@ io.on('connection', socket => {
         let colors = ['#f7b668', '#36a9a6', '#cdff75', '#ff96f0']
         let color = colors[Math.floor(Math.random() * colors.length)]
 
+        socket_id_to_name[socket.id] = name
         people[name] = { color, photoURL }
 
         socket.emit('join_success', {
@@ -56,12 +58,11 @@ io.on('connection', socket => {
         })
     })
 
-    socket.on('disconnect', ({ name }) => {
-        if (people[name]) {
-            delete people[name]
-        }
+    socket.on('disconnect', () => {
+        let name = socket_id_to_name[socket.id]
+        delete people[name]
+        delete socket_id_to_name[socket.id]
 
-        socket.emit('logout_success', {})
         socket.broadcast.emit('remove_person', { name })
     })
 
